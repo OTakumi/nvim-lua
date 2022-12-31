@@ -49,16 +49,13 @@ return require('packer').startup(function(use)
 
 	-- Formatter & Linter
 	use 'MunifTanjim/prettier.nvim'
-	use 'jose-elias-alvarez/null-ls.nvim'
+	-- use 'jose-elias-alvarez/null-ls.nvim'
 
 	--mason
 	use 'williamboman/mason.nvim'
 
 	-- flutter tools
-	use {
-		'akinsho/flutter-tools.nvim',
-		requires = 'nvim-lua/plenary.nvim',
-	}
+	use {'akinsho/flutter-tools.nvim', require = 'nvim-lua/plenary.nvim'}
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
