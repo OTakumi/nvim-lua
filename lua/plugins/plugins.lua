@@ -32,18 +32,27 @@ return require('packer').startup(function(use)
 	use 'hrsh7th/cmp-nvim-lsp'
 	use 'hrsh7th/cmp-nvim-lua'
 	use 'onsails/lspkind-nvim'
+	use 'hrsh7th/vim-vsnip'
 
 	-- snippets
 	use 'L3MON4D3/LuaSnip'			-- snippet engine
 
 	-- LSP
 	use 'neovim/nvim-lspconfig'				-- enable LSP
+	use 'williamboman/mason-lspconfig.nvim'
 	use 'williamboman/nvim-lsp-installer'	-- simple to use language server installer
 	use 'jose-elias-alvarez/null-ls.nvim'	-- for formatters and linters
 	use 'glepnir/lspsaga.nvim'				-- LSP UIs
 
-	-- Formatter
+	-- DAP
+	use 'mfussenegger/nvim-dap'
+
+	-- Formatter & Linter
 	use 'MunifTanjim/prettier.nvim'
+	use 'jose-elias-alvarez/null-ls.nvim'
+
+	--mason
+	use 'williamboman/mason.nvim'
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

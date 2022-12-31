@@ -5,4 +5,5 @@ require('core/colorscheme')
 require('plugins/plugins')
 require('plugins/nvim-tree')
 require('plugins/cmp-config')
+require('plugins/mason.nvim')
 
