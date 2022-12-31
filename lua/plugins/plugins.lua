@@ -54,6 +54,12 @@ return require('packer').startup(function(use)
 	--mason
 	use 'williamboman/mason.nvim'
 
+	-- flutter tools
+	use {
+		'akinsho/flutter-tools.nvim',
+		requires = 'nvim-lua/plenary.nvim',
+	}
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
