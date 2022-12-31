@@ -7,5 +7,4 @@ require('plugins/nvim-tree')
 require('plugins/cmp-config')
 require('lsp/lspconfig')
 require('mason/mason')
-require('flutter/flutter-tools')
 
