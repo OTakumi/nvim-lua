@@ -28,6 +28,10 @@ M.go = function()
 	set_indent(4, false)
 end
 
+M.cs = function()
+	set_indent(4, false)
+end
+
 M.html = function()
 	set_indent(2, false)
 end
