@@ -47,7 +47,21 @@ return require('packer').startup(function(use)
 	use 'L3MON4D3/LuaSnip' -- snippet engine
 
 	-- DAP
-	use 'mfussenegger/nvim-dap'
+	use {
+		'mfussenegger/nvim-dap',
+		opt = true,
+		event = "BufReadPre",
+		module = { "dap" },
+		wants = {
+			"nvim-dap-virtual-text"
+		},
+		requires = {
+			"Pocco81/DAPInstall.nvim",
+		},
+		config = function()
+			require("config.dap").setup()
+		end,
+	}
 
 	-- Formatter & Linter
 	use 'MunifTanjim/prettier.nvim'
