@@ -49,18 +49,6 @@ return require('packer').startup(function(use)
 	-- DAP
 	use {
 		'mfussenegger/nvim-dap',
-		opt = true,
-		event = "BufReadPre",
-		module = { "dap" },
-		wants = {
-			"nvim-dap-virtual-text"
-		},
-		requires = {
-			"Pocco81/DAPInstall.nvim",
-		},
-		config = function()
-			require("config.dap").setup()
-		end,
 	}
 
 	-- Formatter & Linter
