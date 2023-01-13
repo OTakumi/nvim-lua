@@ -1,5 +1,5 @@
-vim.api.nvim_exec ('language en_US', true)
-vim.api.nvim_exec ('language message en_US', true)
+vim.api.nvim_exec ('language en_US.utf8', true)
+vim.api.nvim_exec ('language message en_US.utf8', true)
 
 local options = {
 	encoding = "utf-8",
