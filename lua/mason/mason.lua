@@ -13,6 +13,10 @@ require('mason-lspconfig').setup({
 		"sumneko_lua",
 		"rust_analyzer",
 		"omnisharp",
+		"clangd",
+		"cmake",
+		"neocmake",
+		"dockerls",
 	}
 })
 
