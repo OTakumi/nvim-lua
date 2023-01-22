@@ -49,6 +49,7 @@ return require('packer').startup(function(use)
 	-- DAP
 	use {
 		'mfussenegger/nvim-dap',
+		'jayp0521/mason-nvim-dap.nvim',
 	}
 
 	-- Formatter & Linter

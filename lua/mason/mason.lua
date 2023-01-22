@@ -32,7 +32,12 @@ require('mason-lspconfig').setup_handlers({
 	end,
 
 	["rust_analyzer"] = function ()
-		require("rust-tools").setup {}
+		require("rust-tools").setup {
+			tools = {
+				executor = require("rust-tools/executors").termopen,
+				reload_workspace_from_cargo_toml = true,
+			}
+		}
 	end,
 	
 	["sumneko_lua"] = function ()
@@ -46,6 +51,11 @@ require('mason-lspconfig').setup_handlers({
 	end,
 })
 
+require("mason-nvim-dap").setup({
+		automatic_setup = true,
+		ensure_installed = { 'stylua', 'jq' }
+	}
+)
 
 -- 2. build-in LSP function
 -- keyboard shortcut
