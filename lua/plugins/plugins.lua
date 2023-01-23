@@ -40,6 +40,7 @@ return require('packer').startup(function(use)
 	use 'saadparwaiz1/cmp_luasnip' -- snippet completions
 	use 'hrsh7th/cmp-nvim-lsp'
 	use 'hrsh7th/cmp-nvim-lua'
+	use 'hrsh7th/cmp-vsnip'
 	use 'onsails/lspkind-nvim'
 	use 'hrsh7th/vim-vsnip'
 
@@ -48,8 +49,11 @@ return require('packer').startup(function(use)
 
 	-- DAP
 	use {
-		'mfussenegger/nvim-dap',
-		'jayp0521/mason-nvim-dap.nvim',
+		"rcarriga/nvim-dap-ui",
+		requires = {
+			'mfussenegger/nvim-dap',
+			'jayp0521/mason-nvim-dap.nvim',
+		}
 	}
 
 	-- Formatter & Linter

@@ -15,7 +15,6 @@ require('mason-lspconfig').setup({
 		"omnisharp",
 		"clangd",
 		"cmake",
-		"neocmake",
 		"dockerls",
 	}
 })
@@ -53,7 +52,14 @@ require('mason-lspconfig').setup_handlers({
 
 require("mason-nvim-dap").setup({
 		automatic_setup = true,
-		ensure_installed = { 'stylua', 'jq' }
+		ensure_installed = {
+			'cppdbg',
+			'coreclr',
+			'codelldb',
+			'node2',
+			'chrome',
+			'dart',
+		}
 	}
 )
 
