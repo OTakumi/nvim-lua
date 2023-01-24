@@ -50,20 +50,7 @@ require('mason-lspconfig').setup_handlers({
 	end,
 })
 
-require("mason-nvim-dap").setup({
-		automatic_setup = true,
-		ensure_installed = {
-			'cppdbg',
-			'coreclr',
-			'codelldb',
-			'node2',
-			'chrome',
-			'dart',
-		}
-	}
-)
-
--- 2. build-in LSP function
+-- build-in LSP function
 -- keyboard shortcut
 vim.keymap.set('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')

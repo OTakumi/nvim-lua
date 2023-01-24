@@ -53,7 +53,13 @@ return require('packer').startup(function(use)
 		requires = {
 			'mfussenegger/nvim-dap',
 			'jayp0521/mason-nvim-dap.nvim',
-		}
+		},
+		config = function()
+			vim.fn.sign_define('DapBreakpoint', {text='■', texthl='', linehl='', numhl=''})
+			vim.fn.sign_define('DapStopped', {text='●', texthl='', linehl='', numhl=''})
+			require('dapui').setup()
+			require('dap.ext.vscode').load_launchjs()
+		end
 	}
 
 	-- Formatter & Linter
