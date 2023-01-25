@@ -71,6 +71,9 @@ return require('packer').startup(function(use)
 	-- Formatter & Linter
 	use 'MunifTanjim/prettier.nvim'
 
+	-- Terminal
+	use 'voldikss/vim-floaterm'
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
