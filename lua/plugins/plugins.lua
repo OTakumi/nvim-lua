@@ -23,6 +23,12 @@ return require('packer').startup(function(use)
 		tag = 'nightly' --optional, updated every week.
 	}
 
+	-- file finder
+	use {
+		'nvim-telescope/telescope.nvim', tag = '0.1.1',
+		requires = { {'nvim-lua/plenary.nvim'} }
+	}
+
 	-- LSP
 	use 'williamboman/mason.nvim'
 	use 'williamboman/mason-lspconfig.nvim'
