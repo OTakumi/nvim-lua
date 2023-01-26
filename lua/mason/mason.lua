@@ -48,10 +48,6 @@ require('mason-lspconfig').setup_handlers({
 			}
 		}
 	end,
-
-	["omnisharp_mono"] = function()
-		settings = {}
-	end,
 })
 
 -- build-in LSP function
