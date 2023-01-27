@@ -1,55 +1,49 @@
 local M = {}
 
-local function set_indent(tab_length, is_hard_tab)
-	if is_hard_tab then
-		vim.bo.expandtab = false
-	else
-		vim.bo.expandtab = true
-	end
-
+local function set_indent(tab_length)
 	vim.bo.shiftwidth	= tab_length
 	vim.bo.softtabstop	= tab_length
 	vim.bo.tabstop		= tab_length
 end
 
 M.c = function()
-	set_indent(4, false)
+	set_indent(4)
 end
 
 M.python = function()
-	set_indent(4, false)
+	set_indent(4)
 end
 
 M.rs = function()
-	set_indent(4, false)
+	set_indent(4)
 end
 
 M.go = function()
-	set_indent(4, false)
+	set_indent(4)
 end
 
 M.cs = function()
-	set_indent(4, false)
+	set_indent(4)
 end
 
 M.html = function()
-	set_indent(2, false)
+	set_indent(2)
 end
 
 M.css = function()
-	set_indent(2, false)
+	set_indent(2)
 end
 
 M.scss = function()
-	set_indent(2, false)
+	set_indent(2)
 end
 
 M.sass = function()
-	set_indent(2, false)
+	set_indent(2)
 end
 
 M.js = function()
-	set_indent(2, false)
+	set_indent(2)
 end
 
 M.ts = function()
