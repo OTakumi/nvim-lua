@@ -74,6 +74,9 @@ return require('packer').startup(function(use)
 	-- Terminal
 	use 'voldikss/vim-floaterm'
 
+	-- Omnisharp
+	use 'OmniSharp/omnisharp-vim'
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
