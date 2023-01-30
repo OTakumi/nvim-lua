@@ -33,10 +33,8 @@ return require('packer').startup(function(use)
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
     use 'neovim/nvim-lspconfig' -- enable LSP
-    -- use 'williamboman/nvim-lsp-installer'    -- simple to use language server installer
     use 'jose-elias-alvarez/null-ls.nvim' -- for formatters and linters
     use 'glepnir/lspsaga.nvim' -- LSP UIs
-    use 'simrat39/rust-tools.nvim'
 
     -- cmp plugins
     use 'hrsh7th/nvim-cmp' -- The completion plugins
@@ -88,6 +86,15 @@ return require('packer').startup(function(use)
             -- refer to the configuration section below
             }
         end
+    }
+
+    -- rust tools
+    use 'simrat39/rust-tools.nvim'
+
+    -- dart dart-tools
+    use {
+        'akinsho/flutter-tools.nvim',
+        requires = 'nvim-lua/plenary.nvim'
     }
 
     -- Automatically set up your configuration after cloning packer.nvim
