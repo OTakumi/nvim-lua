@@ -7,4 +7,5 @@ require('plugins/cmp-config')
 require('mason/mason')
 require('plugins/nvim-tree')
 require('dap/dap')
+require('core/lualine')
 
