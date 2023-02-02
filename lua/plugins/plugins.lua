@@ -94,11 +94,14 @@ return require('packer').startup(function(use)
     -- rust tools
     use 'simrat39/rust-tools.nvim'
 
-    -- dart dart-tools
+    -- flutter-tools
     use {
         'akinsho/flutter-tools.nvim',
         requires = 'nvim-lua/plenary.nvim'
     }
+	use 'dart-lang/dart-vim-plugin'
+	use 'thosakwe/vim-flutter'
+
 
 	-- statusline style
 	use {
