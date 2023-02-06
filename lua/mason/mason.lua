@@ -16,6 +16,8 @@ require('mason-lspconfig').setup({
 		"clangd",
 		"cmake",
 		"dockerls",
+		"gopls",
+		"golangci_lint_ls",
 	}
 })
 
