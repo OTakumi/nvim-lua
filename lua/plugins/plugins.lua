@@ -102,6 +102,8 @@ return require('packer').startup(function(use)
 	use 'dart-lang/dart-vim-plugin'
 	use 'thosakwe/vim-flutter'
 
+	-- Go
+	use 'mattn/vim-goimports'
 
 	-- statusline style
 	use {
