@@ -9,7 +9,6 @@ require("mason-nvim-dap").setup({
 			'codelldb',
 			'node2',
 			'chrome',
-			'dart',
 		}
 	}
 )

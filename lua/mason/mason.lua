@@ -10,7 +10,7 @@ require('mason').setup({
 
 require('mason-lspconfig').setup({
 	ensure_installed = {
-		"sumneko_lua",
+--		"sumneko_lua",
 		"rust_analyzer",
 		"omnisharp",
 		"clangd",
@@ -41,15 +41,15 @@ require('mason-lspconfig').setup_handlers({
 		}
 	end,
 	
-	["sumneko_lua"] = function ()
-		settings = {
-			Lua = {
-				diagnostics = {
-					globals = { "vim" }
-				}
-			}
-		}
-	end,
+--	["sumneko_lua"] = function ()
+--		settings = {
+--			Lua = {
+--				diagnostics = {
+--					globals = { "vim" }
+--				}
+--			}
+--		}
+--	end,
 })
 
 -- LSP handlers

@@ -94,14 +94,6 @@ return require('packer').startup(function(use)
     -- rust tools
     use 'simrat39/rust-tools.nvim'
 
-    -- flutter-tools
-    use {
-        'akinsho/flutter-tools.nvim',
-        requires = 'nvim-lua/plenary.nvim'
-    }
-	use 'dart-lang/dart-vim-plugin'
-	use 'thosakwe/vim-flutter'
-
 	-- Go
 	use 'mattn/vim-goimports'
 
@@ -110,6 +102,9 @@ return require('packer').startup(function(use)
 		'nvim-lualine/lualine.nvim',
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 	}
+
+	-- Colorschema
+	use 'folke/tokyonight.nvim'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
