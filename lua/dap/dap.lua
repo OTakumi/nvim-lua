@@ -14,6 +14,9 @@ require("mason-nvim-dap").setup({
 )
 
 -- C#
+-- For netcoredbg, download the released file from the following a link
+---- https://github.com/Samsung/netcoredbg
+-- and put DOTNET_DEBUGGER_LOCATION=/path/to/netcoredbg in csharp.lua.
 dap.adapters.coreclr = {
 	type = 'executable',
 	command = DOTNET_DEBUGGER_LOCATION .. "\\netcoredbg",
