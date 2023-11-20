@@ -104,6 +104,14 @@ return require('packer').startup(function(use)
 		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 	}
 
+	--markdown
+	use {
+		'godlygeek/tabular',
+		'preservim/vim-markdown',
+		'previm/previm',
+		'tyru/open-browser.vim',
+	}
+
 	-- Colorschema
 	use 'folke/tokyonight.nvim'
 
