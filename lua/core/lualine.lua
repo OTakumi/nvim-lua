@@ -1,6 +1,6 @@
 require('lualine').setup({
 	options = {
-		theme = 'nord',
-		globalstatus = true,
+		theme = 'material',
+		icons_enabled = true,
 	}
 })

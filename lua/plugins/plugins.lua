@@ -71,6 +71,7 @@ return require('packer').startup(function(use)
 
     -- Formatter & Linter
     use 'MunifTanjim/prettier.nvim'
+	use 'mhartington/formatter.nvim'
 
     -- Terminal
     use 'voldikss/vim-floaterm'
@@ -100,7 +101,7 @@ return require('packer').startup(function(use)
 	-- statusline style
 	use {
 		'nvim-lualine/lualine.nvim',
-		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 	}
 
 	-- Colorschema

@@ -10,7 +10,6 @@ require('mason').setup({
 
 require('mason-lspconfig').setup({
 	ensure_installed = {
---		"sumneko_lua",
 		"rust_analyzer",
 		"omnisharp",
 		"clangd",
@@ -40,21 +39,11 @@ require('mason-lspconfig').setup_handlers({
 			}
 		}
 	end,
-	
---	["sumneko_lua"] = function ()
---		settings = {
---			Lua = {
---				diagnostics = {
---					globals = { "vim" }
---				}
---			}
---		}
---	end,
 })
-
+	
 -- LSP handlers
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
+vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
 )
 -- Reference highlight
 vim.cmd [[
