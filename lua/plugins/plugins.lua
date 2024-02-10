@@ -66,8 +66,20 @@ return require('packer').startup(function(use)
             vim.fn.sign_define('DapStopped', {text='●', texthl='', linehl='', numhl=''})
             require('dapui').setup()
             require('dap.ext.vscode').load_launchjs()
-        end
+        end,
+		opts = function(_, opts)
+			opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
+				"codelldb",
+			})
+		end,
     }
+	use 'leoluz/nvim-dap-go'
+	use {
+		'folke/neodev.nvim',
+		require("neodev").setup({
+			library = { plugins = { "nvim-dap-ui" }, type = true }
+		})
+	}
 
     -- Formatter & Linter
     use 'MunifTanjim/prettier.nvim'

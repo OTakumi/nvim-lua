@@ -31,6 +31,11 @@ map('n', '<C-j>', '<down>')
 map('n', '<C-k>', '<up>')
 map('n', '<C-l>', '<right>')
 
+-----------------------------------------------------------
+-- Telescope
+-----------------------------------------------------------
+
+
 -- build-in LSP function
 -- keyboard shortcut
 map('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>')
@@ -52,3 +57,7 @@ map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_fol
 map('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
 map('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 
+-----------------------------------------------------------
+-- Debug
+-----------------------------------------------------------
+map('n', '<F5>', ":lua require'dap'.continue()<CR>", { silent = true })

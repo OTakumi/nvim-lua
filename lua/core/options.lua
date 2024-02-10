@@ -20,7 +20,8 @@ local options = {
 	wrapscan = true,
 	hlsearch = true,
 	incsearch = true,
-	inccommand = 'split'
+	inccommand = 'split',
+	cursorcolumn = true
 }
 
 vim.opt.shortmess:append("c")

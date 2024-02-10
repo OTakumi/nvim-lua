@@ -1,65 +1,59 @@
 local M = {}
 
-local function set_indent(tab_length)
+local function set_indent(tab_length, is_hard_tab)
+	if is_hard_tab then
+		vim.bo.expandtab = false
+	else
+		vim.bo.expandtab = true
+	end
+
 	vim.bo.shiftwidth	= tab_length
 	vim.bo.softtabstop	= tab_length
 	vim.bo.tabstop		= tab_length
 end
 
-M.c = function()
-	set_indent(4)
-end
-
 M.python = function()
-	set_indent(4)
+	set_indent(4, true)
 end
 
 M.rs = function()
-	set_indent(4)
+	set_indent(4, true)
 end
 
 M.go = function()
-	set_indent(4)
+	set_indent(4, true)
 end
 
 M.cs = function()
-	set_indent(4)
+	set_indent(4, true)
 end
 
 M.html = function()
-	set_indent(2)
+	set_indent(2, true)
 end
 
 M.css = function()
-	set_indent(2)
+	set_indent(2, true)
 end
 
 M.scss = function()
-	set_indent(2)
+	set_indent(2, true)
 end
 
 M.sass = function()
-	set_indent(2)
+	set_indent(2, true)
 end
 
-M.js = function()
-	set_indent(2)
+M.javascript = function()
+	set_indent(2, true)
 end
 
-M.ts = function()
-	set_indent(2, false)
-end
-
-M.jsx = function()
-	set_indent(2, false)
-end
-
-M.tsx = function()
-	set_indent(2, false)
+M.typescript = function()
+	set_indent(2, true)
 end
 
 M.lua = function()
-	set_indent(4, false)
+	set_indent(4, true)
 end
 
 return setmetatable(M, {
