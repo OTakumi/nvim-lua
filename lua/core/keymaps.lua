@@ -31,10 +31,15 @@ map('n', '<C-j>', '<down>')
 map('n', '<C-k>', '<up>')
 map('n', '<C-l>', '<right>')
 
+-- Terminal
+map('n', 'tt', '<cmd>terminal<CR>')
+vim.cmd[[ tnoremap <Esc> <C-\><C-n> ]]
+vim.cmd[[ autocmd TermOpen * startinsert ]]
+
 -----------------------------------------------------------
 -- Telescope
 -----------------------------------------------------------
-
+map('n', '<C-p>', '<cmd>Telescope find_files<CR>')
 
 -- build-in LSP function
 -- keyboard shortcut

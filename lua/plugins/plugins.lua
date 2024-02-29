@@ -104,6 +104,14 @@ return require('packer').startup(function(use)
         end
     }
 
+    -- comments
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
+
     -- rust tools
     use 'simrat39/rust-tools.nvim'
 
@@ -118,11 +126,28 @@ return require('packer').startup(function(use)
 
 	--markdown
 	use {
-		'godlygeek/tabular',
 		'preservim/vim-markdown',
 		'previm/previm',
 		'tyru/open-browser.vim',
 	}
+
+    use ({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+        config = function()
+            local opts = {
+                mkdp_echo_preview_url = 1,
+                mkdp_open_to_the_world = 1
+            }
+
+            for k, v in pairs(opts) do
+                vim.g[k] = v
+            end
+        end
+    })
+
+    -- gitsigns
+    use 'lewis6991/gitsigns.nvim'
 
 	-- Colorschema
 	use 'folke/tokyonight.nvim'
