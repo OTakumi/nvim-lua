@@ -2,11 +2,11 @@
 -- color scheme
 --------------------------------------
 
-vim.cmd [[
+vim.cmd([[
 	try
 		colorscheme tokyonight-night
 	catch /^Vim\%((\a\+)\)\=:E815/
 		colorscheme default
 		set background=dark
 	endtry
-]]
+]])

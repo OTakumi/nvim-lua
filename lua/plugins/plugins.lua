@@ -1,4 +1,4 @@
-vim.cmd [[packadd packer.nvim]]
+vim.cmd([[packadd packer.nvim]])
 
 vim.cmd([[
   augroup packer_user_config
@@ -7,150 +7,118 @@ vim.cmd([[
   augroup end
 ]])
 
-return require('packer').startup(function(use)
+return require("packer").startup(function(use)
     -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
+    use("wbthomason/packer.nvim")
 
     -- Simple plugins can be specified as strings
-    use 'rstacruz/vim-closer'
+    use("rstacruz/vim-closer")
 
     -- nvim-tree
-    use {
-        'nvim-tree/nvim-tree.lua',
+    use({
+        "nvim-tree/nvim-tree.lua",
         require = {
-            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+            "nvim-tree/nvim-web-devicons", -- optional, for file icons
         },
-        tag = 'nightly' --optional, updated every week.
-    }
+        tag = "nightly", --optional, updated every week.
+    })
 
-	-- Git
-	use 'tpope/vim-fugitive'
+    -- Git
+    use("tpope/vim-fugitive")
 
     -- file finder
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
-        requires = { {'nvim-lua/plenary.nvim'} }
-    }
+    use({
+        "nvim-telescope/telescope.nvim",
+        tag = "0.1.1",
+        requires = {
+            { "nvim-lua/plenary.nvim" },
+            { "nvim-telescope/telescope-ghq.nvim" },
+            { "nvim-telescope/telescope-z.nvim" },
+        },
+    })
 
     -- LSP
-    use 'williamboman/mason.nvim'
-    use 'williamboman/mason-lspconfig.nvim'
-    use 'neovim/nvim-lspconfig' -- enable LSP
-    use 'jose-elias-alvarez/null-ls.nvim' -- for formatters and linters
-    use 'glepnir/lspsaga.nvim' -- LSP UIs
+    use("williamboman/mason.nvim")
+    use("williamboman/mason-lspconfig.nvim")
+    use("neovim/nvim-lspconfig") -- enable LSP
+    use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+    use({
+        "nvimdev/lspsaga.nvim", -- LSP UIs
+        after = "nvim-lspconfig",
+        config = function()
+            require("lspsaga").setup({})
+        end,
+    })
 
     -- cmp plugins
-    use 'hrsh7th/nvim-cmp' -- The completion plugins
-    use 'hrsh7th/cmp-buffer' -- buffer completions
-    use 'hrsh7th/cmp-path' -- path completions
-    use 'hrsh7th/cmp-cmdline' -- cmdline completions
-    use 'saadparwaiz1/cmp_luasnip' -- snippet completions
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-nvim-lua'
-    use 'hrsh7th/cmp-vsnip'
-    use 'onsails/lspkind-nvim'
-    use 'hrsh7th/vim-vsnip'
-
-    -- snippets
-    use 'L3MON4D3/LuaSnip' -- snippet engine
-
-    -- DAP
-    use {
-        "rcarriga/nvim-dap-ui",
+    use({
+        "hrsh7th/nvim-cmp", -- The completion plugins
         requires = {
-            'mfussenegger/nvim-dap',
-            'jayp0521/mason-nvim-dap.nvim',
+            { "hrsh7th/cmp-buffer" }, -- buffer completions
+            { "hrsh7th/cmp-path" }, -- path completions
+            { "hrsh7th/cmp-cmdline" }, -- cmdline completions
+            { "saadparwaiz1/cmp_luasnip" }, -- snippet completions
+            { "hrsh7th/cmp-nvim-lsp" },
+            { "hrsh7th/cmp-nvim-lua" },
+            { "hrsh7th/cmp-vsnip" },
+            { "onsails/lspkind-nvim" },
+            { "hrsh7th/vim-vsnip" },
         },
-        config = function()
-            vim.fn.sign_define('DapBreakpoint', {text='■', texthl='', linehl='', numhl=''})
-            vim.fn.sign_define('DapStopped', {text='●', texthl='', linehl='', numhl=''})
-            require('dapui').setup()
-            require('dap.ext.vscode').load_launchjs()
-        end,
-		opts = function(_, opts)
-			opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
-				"codelldb",
-			})
-		end,
-    }
-	use 'leoluz/nvim-dap-go'
-	use {
-		'folke/neodev.nvim',
-		require("neodev").setup({
-			library = { plugins = { "nvim-dap-ui" }, type = true }
-		})
-	}
+    })
 
-    -- Formatter & Linter
-    use 'MunifTanjim/prettier.nvim'
-	use 'mhartington/formatter.nvim'
+    -- formatters, linters
+    use("jay-babu/mason-null-ls.nvim")
+
+    use("mhartington/formatter.nvim")
 
     -- Terminal
-    use 'voldikss/vim-floaterm'
-
-    -- Omnisharp
-    use 'OmniSharp/omnisharp-vim'
+    use("voldikss/vim-floaterm")
 
     -- Todo highlight
-    use {
+    use({
         "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim",
         config = function()
-            require("todo-comments").setup {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-            }
-        end
-    }
+            require("todo-comments").setup({
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            })
+        end,
+    })
 
     -- comments
-    use {
-        'numToStr/Comment.nvim',
+    use({
+        "numToStr/Comment.nvim",
         config = function()
-            require('Comment').setup()
-        end
-    }
+            require("Comment").setup()
+        end,
+    })
 
     -- rust tools
-    use 'simrat39/rust-tools.nvim'
+    use("simrat39/rust-tools.nvim")
 
-	-- Go
-	use 'mattn/vim-goimports'
+    -- statusline style
+    use({
+        "nvim-lualine/lualine.nvim",
+        requires = { "nvim-tree/nvim-web-devicons", opt = true },
+    })
 
-	-- statusline style
-	use {
-		'nvim-lualine/lualine.nvim',
-		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-	}
-
-	--markdown
-	use {
-		'preservim/vim-markdown',
-		'previm/previm',
-		'tyru/open-browser.vim',
-	}
-
-    use ({
-        "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
-        config = function()
-            local opts = {
-                mkdp_echo_preview_url = 1,
-                mkdp_open_to_the_world = 1
-            }
-
-            for k, v in pairs(opts) do
-                vim.g[k] = v
-            end
-        end
+    -- markdown
+    use({
+        "preservim/vim-markdown",
+        "previm/previm",
+        "tyru/open-browser.vim",
     })
 
     -- gitsigns
-    use 'lewis6991/gitsigns.nvim'
+    use("lewis6991/gitsigns.nvim")
 
-	-- Colorschema
-	use 'folke/tokyonight.nvim'
+    -- Colorschema
+    use("folke/tokyonight.nvim")
+
+    -- Plantuml
+    use("aklt/plantuml-syntax")
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

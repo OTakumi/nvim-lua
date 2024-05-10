@@ -7,9 +7,9 @@ local function set_indent(tab_length, is_hard_tab)
         vim.bo.expandtab = true
     end
 
-    vim.bo.shiftwidth   = tab_length
-    vim.bo.softtabstop  = tab_length
-    vim.bo.tabstop      = tab_length
+    vim.bo.shiftwidth = tab_length
+    vim.bo.softtabstop = tab_length
+    vim.bo.tabstop = tab_length
 end
 
 M.python = function()
@@ -52,6 +52,10 @@ M.typescript = function()
     set_indent(2, false)
 end
 
+M.typescriptreact = function()
+    set_indent(2, false)
+end
+
 M.lua = function()
     set_indent(4, false)
 end
@@ -59,8 +63,8 @@ end
 return setmetatable(M, {
     __index = function()
         return function()
-            print('Unexpected filetype')
+            print("Unexpected filetype")
             set_indent(2, false)
         end
-    end
+    end,
 })
