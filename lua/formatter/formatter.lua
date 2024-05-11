@@ -40,6 +40,45 @@ require("formatter").setup({
             end,
         },
 
+        -- ========== Rust ==========
+        rust = {
+            require("formatter.filetypes.rust").rustfmt,
+            function()
+                return {
+                    exe = "rustfmt",
+                    args = {
+                        "--edition=2021",
+                        "--",
+                        util.escape_path(util.get_current_buffer_file_path()),
+                    },
+                    stdin = false,
+                }
+            end,
+        },
+
+        -- ========== Python ==========
+        python = {
+            require("formatter.filetypes.python").black,
+            function()
+                return {
+                    exe = "black",
+                    args = {
+                        "--quiet",
+                        "-",
+                    },
+                    stdin = true,
+                }
+            end,
+        },
+
+        -- ========== TypeScript ==========
+        typescript = {require("formatter.filetypes.typescript").biome,},
+        typescriptreact = {require("formatter.filetypes.typescriptreact").biome,},
+
+        -- ========== JavaScript ==========
+        javascript = {require("formatter.filetypes.javascript").biome,},
+        javascriptreact = {require("formatter.filetypes.javascriptreact").biome,},
+
         -- Use the special "*" filetype for defining formatter configurations on
         -- any filetype
         ["*"] = {
