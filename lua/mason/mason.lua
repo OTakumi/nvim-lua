@@ -12,12 +12,19 @@ require("mason-lspconfig").setup({
     ensure_installed = {
         "rust_analyzer",
         "clangd",
-        "cmake",
+        "cssls",
         "dockerls",
+        "docker_compose_language_service",
         "gopls",
-        "golangci_lint_ls",
+        "html",
+        "jsonls",
+        "lua_ls",
         "marksman",
-        "biome",
+        "pyright",
+        "sqls",
+        "tsserver",
+        "vimls",
+        "yamlls",
     },
 })
 
@@ -29,7 +36,7 @@ require("mason-lspconfig").setup_handlers({
 
         require("lspconfig")[server].setup(opt)
     end,
-
+    --
     ["rust_analyzer"] = function()
         require("rust-tools").setup({
             tools = {
@@ -44,6 +51,18 @@ local null_ls = require("null-ls")
 null_ls.setup()
 
 require("mason-null-ls").setup({
-    ensure_installed = { "stylua", "jq" },
+    ensure_installed = {
+        "biome",
+        "stylua",
+        "jq",
+        "rustfmt",
+        "prettier",
+        "dockerfilelint",
+        "markdownlint",
+        "pylint",
+        "black",
+        "gofumpt",
+        "yamllint",
+    },
     handlers = {},
 })
