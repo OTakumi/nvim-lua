@@ -1,3 +1,10 @@
+-- Automatically format on save
+vim.api.nvim_create_augroup("__formatter__", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+    group = "__formatter__",
+    command = ":FormatWrite",
+})
+
 -- Utilities for creating configurations
 local util = require("formatter.util")
 
@@ -7,10 +14,13 @@ require("formatter").setup({
     logging = true,
     -- Set the log level
     log_level = vim.log.levels.WARN,
+    -- Format on save
+
     -- All formatter configurations are opt-in
     filetype = {
         -- Formatter configurations for filetype "lua" go here
         -- and will be executed in order
+        -- ========== Lua ==========
         lua = {
             -- "formatter.filetypes.lua" defines default configurations for the
             -- "lua" filetype
@@ -72,12 +82,12 @@ require("formatter").setup({
         },
 
         -- ========== TypeScript ==========
-        typescript = {require("formatter.filetypes.typescript").biome,},
-        typescriptreact = {require("formatter.filetypes.typescriptreact").biome,},
+        typescript = { require("formatter.filetypes.typescript").biome },
+        typescriptreact = { require("formatter.filetypes.typescriptreact").biome },
 
         -- ========== JavaScript ==========
-        javascript = {require("formatter.filetypes.javascript").biome,},
-        javascriptreact = {require("formatter.filetypes.javascriptreact").biome,},
+        javascript = { require("formatter.filetypes.javascript").biome },
+        javascriptreact = { require("formatter.filetypes.javascriptreact").biome },
 
         -- Use the special "*" filetype for defining formatter configurations on
         -- any filetype
