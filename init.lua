@@ -8,6 +8,7 @@ require("plugins/nvim-tree")
 require("core/lualine")
 require("mason/mason")
 require("formatter/formatter")
+require("fzf/telescope")
 
 vim.cmd("filetype off")
 local my_filetype = require("core.filetype")

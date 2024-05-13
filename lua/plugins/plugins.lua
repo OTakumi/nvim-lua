@@ -22,6 +22,7 @@ return require("packer").startup(function(use)
         },
         tag = "nightly", --optional, updated every week.
     })
+    use("nvim-treesitter/nvim-treesitter")
 
     -- file finder
     use({
@@ -31,11 +32,13 @@ return require("packer").startup(function(use)
             { "nvim-lua/plenary.nvim" },
             { "nvim-telescope/telescope-ghq.nvim" },
             { "nvim-telescope/telescope-z.nvim" },
+            { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
         },
         wants = {
             "plenary.nvim",
             "telescope-ghq.nvim",
             "telescope-z.nvim",
+            "telescope-fzf-native.nvim",
         },
     })
 

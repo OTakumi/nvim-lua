@@ -7,7 +7,7 @@ local function map(mode, lhs, rhs, opts)
     if opts then
         options = vim.tbl_extend("force", options, opts)
     end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    vim.keymap.set(mode, lhs, rhs, options)
 end
 
 -- Change leader to a comma
@@ -34,15 +34,6 @@ map("n", "<C-l>", "<right>")
 -- Terminal
 map("n", "ft", "<cmd>FloatermNew<CR>")
 map("n", "fk", "<cmd>FloatermKill<CR>")
-
------------------------------------------------------------
--- Telescope
------------------------------------------------------------
--- Using Lua functions
-map("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
-map("n", "<leader>fg", "<cmd>Telescope.builtin.live_grep<CR>")
-map("n", "<leader>fb", "<cmd>Telescope.builtin.buffers<CR>")
-map("n", "<leader>fh", "<cmd>Telescope.builtin.help_tags<CR>")
 
 -- build-in LSP function
 -- keyboard shortcut
