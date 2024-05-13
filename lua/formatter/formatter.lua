@@ -8,6 +8,20 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- Utilities for creating configurations
 local util = require("formatter.util")
 
+local biome_config = function()
+    return {
+        exe = "biome",
+        args = {
+            "format",
+            "--indent-style=space",
+            "--indent-width=2",
+            "--stdin-file-path",
+            util.escape_path(util.get_current_buffer_file_path()),
+        },
+        stdin = true,
+    }
+end
+
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
 require("formatter").setup({
     -- Enable or disable logging
@@ -82,12 +96,12 @@ require("formatter").setup({
         },
 
         -- ========== TypeScript ==========
-        typescript = { require("formatter.filetypes.typescript").biome },
-        typescriptreact = { require("formatter.filetypes.typescriptreact").biome },
+        typescript = { require("formatter.filetypes.typescript").biome, biome_config },
+        typescriptreact = { require("formatter.filetypes.typescriptreact").biome, biome_config },
 
         -- ========== JavaScript ==========
-        javascript = { require("formatter.filetypes.javascript").biome },
-        javascriptreact = { require("formatter.filetypes.javascriptreact").biome },
+        javascript = { require("formatter.filetypes.javascript").biome, biome_config },
+        javascriptreact = { require("formatter.filetypes.javascriptreact").biome, biome_config },
 
         -- Use the special "*" filetype for defining formatter configurations on
         -- any filetype

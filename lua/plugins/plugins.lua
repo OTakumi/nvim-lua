@@ -23,9 +23,6 @@ return require("packer").startup(function(use)
         tag = "nightly", --optional, updated every week.
     })
 
-    -- Git
-    use("tpope/vim-fugitive")
-
     -- file finder
     use({
         "nvim-telescope/telescope.nvim",
@@ -35,13 +32,23 @@ return require("packer").startup(function(use)
             { "nvim-telescope/telescope-ghq.nvim" },
             { "nvim-telescope/telescope-z.nvim" },
         },
+        wants = {
+            "plenary.nvim",
+            "telescope-ghq.nvim",
+            "telescope-z.nvim",
+        },
     })
 
     -- LSP
-    use("williamboman/mason.nvim")
-    use("williamboman/mason-lspconfig.nvim")
-    use("neovim/nvim-lspconfig") -- enable LSP
-    use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+    use({
+        "williamboman/mason.nvim",
+        requires = {
+            "williamboman/mason-lspconfig.nvim",
+            "neovim/nvim-lspconfig",
+            "jose-elias-alvarez/null-ls.nvim",
+            "hrsh7th/nvim-cmp",
+        },
+    })
     use({
         "nvimdev/lspsaga.nvim", -- LSP UIs
         after = "nvim-lspconfig",
@@ -53,22 +60,21 @@ return require("packer").startup(function(use)
     -- cmp plugins
     use({
         "hrsh7th/nvim-cmp", -- The completion plugins
+        modeule = { "cmp" },
         requires = {
             { "hrsh7th/cmp-buffer" }, -- buffer completions
             { "hrsh7th/cmp-path" }, -- path completions
             { "hrsh7th/cmp-cmdline" }, -- cmdline completions
-            { "saadparwaiz1/cmp_luasnip" }, -- snippet completions
             { "hrsh7th/cmp-nvim-lsp" },
-            { "hrsh7th/cmp-nvim-lua" },
-            { "hrsh7th/cmp-vsnip" },
-            { "onsails/lspkind-nvim" },
-            { "hrsh7th/vim-vsnip" },
+            { "hrsh7th/cmp-nvim-lua", event = "VimEnter" },
+            { "hrsh7th/cmp-vsnip", event = "VimEnter" },
+            { "hrsh7th/vim-vsnip", event = "VimEnter" },
+            -- { "saadparwaiz1/cmp_luasnip" }, -- snippet completions
         },
     })
 
     -- formatters, linters
     use("jay-babu/mason-null-ls.nvim")
-
     use("mhartington/formatter.nvim")
 
     -- Terminal
@@ -78,13 +84,7 @@ return require("packer").startup(function(use)
     use({
         "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim",
-        config = function()
-            require("todo-comments").setup({
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            })
-        end,
+        wants = "nvim-lua/plenary.nvim",
     })
 
     -- comments
@@ -96,7 +96,7 @@ return require("packer").startup(function(use)
     })
 
     -- rust tools
-    use("simrat39/rust-tools.nvim")
+    -- use("simrat39/rust-tools.nvim")
 
     -- statusline style
     use({
@@ -110,9 +110,6 @@ return require("packer").startup(function(use)
         "previm/previm",
         "tyru/open-browser.vim",
     })
-
-    -- gitsigns
-    use("lewis6991/gitsigns.nvim")
 
     -- Colorschema
     use("folke/tokyonight.nvim")

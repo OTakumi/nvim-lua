@@ -30,19 +30,8 @@ require("mason-lspconfig").setup({
 
 require("mason-lspconfig").setup_handlers({
     function(server)
-        local opt = {
+        require("lspconfig")[server].setup({
             capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        }
-
-        require("lspconfig")[server].setup(opt)
-    end,
-    --
-    ["rust_analyzer"] = function()
-        require("rust-tools").setup({
-            tools = {
-                executor = require("rust-tools/executors").termopen,
-                reload_workspace_from_cargo_toml = true,
-            },
         })
     end,
 })
