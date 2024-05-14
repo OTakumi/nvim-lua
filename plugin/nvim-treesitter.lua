@@ -1,0 +1,20 @@
+require("nvim-treesitter").setup({
+    ensure_installed = {
+        "c",
+        "lua",
+        "vim",
+        "vimdoc",
+        "query",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "html",
+        "css",
+        "markdown",
+        "markdown_inline",
+    },
+    sync_install = false,
+    highlight = { enable = true },
+    indent = { enable = true },
+})

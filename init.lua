@@ -1,15 +1,20 @@
+vim.loader.enable()
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
+end
+vim.opt.rtp:prepend(lazypath)
+
 require("core/keymaps")
 require("core/options")
 require("core/filetype")
+require("lazy/lazy")
 require("core/colorscheme")
-require("plugins/plugins")
-require("plugins/cmp-config")
-require("plugins/nvim-tree")
-require("core/lualine")
-require("mason/mason")
-require("formatter/formatter")
-require("fzf/telescope")
-
-vim.cmd("filetype off")
-local my_filetype = require("core.filetype")
-vim.cmd("filetype on")

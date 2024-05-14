@@ -55,8 +55,3 @@ map("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
 map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
 map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
 map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
-
------------------------------------------------------------
--- Debug
------------------------------------------------------------
-map("n", "<F5>", ":lua require'dap'.continue()<CR>", { silent = true })
