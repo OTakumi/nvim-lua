@@ -80,7 +80,8 @@ require("lazy").setup({
             "nvim-tree/nvim-web-devicons",
         },
         opts = {
-            theme = { "ayu_mirage" },
+            theme = "material",
+            icons_enabled = true,
         },
     },
 
