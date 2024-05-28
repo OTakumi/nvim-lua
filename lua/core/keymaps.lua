@@ -53,5 +53,11 @@ map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
 map("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
 map("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
 map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
-map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+
+--------------- Telescope ---------------
+local builtin = require("telescope.builtin")
+map("n", "<leader>ff", builtin.find_files)
+map("n", "<leader>fg", builtin.live_grep)
+map("n", "<leader>fb", builtin.buffers)
+map("n", "<leader>fh", builtin.help_tags)
+map("n", "<space>fb", ":Telescope file_browser path=%:p:h select_buffer=true theme=dropdown<CR>")

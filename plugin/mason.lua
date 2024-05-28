@@ -22,6 +22,7 @@ require("mason-lspconfig").setup({
         "marksman",
         "pyright",
         "sqls",
+        "taplo",
         "tsserver",
         "vimls",
         "yamlls",

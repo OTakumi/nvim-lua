@@ -13,8 +13,12 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+require("lazy/lazy")
 require("core/keymaps")
 require("core/options")
 require("core/filetype")
-require("lazy/lazy")
 require("core/colorscheme")
