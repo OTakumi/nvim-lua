@@ -20,6 +20,8 @@ local biome_config = function()
             "--quote-style=single",
             "--trailing-comma=es5",
             "--attribute-position=multiline",
+
+            -- Always write the path setting immediately after std-file-path
             "--stdin-file-path",
             util.escape_path(util.get_current_buffer_file_path()),
         },
