@@ -10,48 +10,50 @@ require("mason").setup({
 
 require("mason-lspconfig").setup({
     ensure_installed = {
-        "rust_analyzer",
         "clangd",
-        "cssls",
         "dockerls",
         "docker_compose_language_service",
+        "graphql",
         "gopls",
-        "html",
-        "jsonls",
+        "jqls",
         "lua_ls",
+        "luau_lsp",
         "marksman",
-        "pyright",
-        "sqls",
+        "pylsp",
+        "sqlls",
         "taplo",
         "tsserver",
-        "vimls",
         "yamlls",
     },
 })
 
-require("mason-lspconfig").setup_handlers({
-    function(server)
-        require("lspconfig")[server].setup({
-            capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        })
-    end,
+require("mason-nvim-dap").setup({
+    ensure_installed = {
+        "python",
+        "delve",
+        "cppdbg",
+        "codelldb",
+        "cpptools",
+    },
+    handlers = {},
 })
 
-local null_ls = require("null-ls")
-null_ls.setup()
-
 require("mason-null-ls").setup({
+    function() end,
     ensure_installed = {
         "biome",
-        "stylua",
-        "jq",
-        "rustfmt",
-        "prettier",
         "dockerfilelint",
+        "dockerlint",
+        "eslint",
+        "gofmt",
+        "golangci-lint",
+        "jsonlint",
         "markdownlint",
+        "prettier",
         "pylint",
-        "black",
-        "gofumpt",
+        "stylua",
+        "shellcheck",
+        "stylelint",
         "yamllint",
     },
     handlers = {},

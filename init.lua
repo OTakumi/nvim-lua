@@ -11,6 +11,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
         lazypath,
     })
 end
+
 vim.opt.rtp:prepend(lazypath)
 
 -- disable netrw at the very start of your init.lua (strongly advised)
@@ -22,3 +23,16 @@ require("core/keymaps")
 require("core/options")
 require("core/filetype")
 require("core/colorscheme")
+require("core/rust")
+
+-- filetype configurations
+local ft = require("core/filetype")
+
+vim.api.nvim_create_augroup("vimrc_augroup", {})
+vim.api.nvim_create_autocmd("FileType", {
+    group = "vimrc_augroup",
+    pattern = "*",
+    callback = function(args)
+        ft[args.match]()
+    end,
+})

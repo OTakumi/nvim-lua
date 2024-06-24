@@ -24,14 +24,21 @@ require("lazy").setup({
     -- mason
     {
         "williamboman/mason.nvim",
-        dependencies = {
-            { "williamboman/mason-lspconfig.nvim", lazy = true, event = "InsertEnter" },
-            { "neovim/nvim-lspconfig", lazy = true, event = "InsertEnter" },
-            { "jose-elias-alvarez/null-ls.nvim", lazy = true, event = "InsertEnter" },
-            { "hrsh7th/nvim-cmp", lazy = true, event = "InsertEnter" },
-        },
         lazy = true,
-        event = "InsertEnter",
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = {
+            { "williamboman/mason-lspconfig.nvim", lazy = true, event = { "BufReadPre", "BufNewFile" } },
+            { "neovim/nvim-lspconfig", lazy = true, event = { "BufReadPre", "BufNewFile" } },
+            { "hrsh7th/nvim-cmp", lazy = true, event = { "BufReadPre", "BufNewFile" } },
+        },
+    },
+    {
+        "jay-babu/mason-null-ls.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = {
+            "williamboman/mason.nvim",
+            "nvimtools/none-ls.nvim",
+        },
     },
 
     -- cmp plugins
@@ -53,8 +60,27 @@ require("lazy").setup({
     -- nvim-treesitter
     {
         "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
         lazy = true,
         event = "VimEnter",
+    },
+
+    -- dap
+    {
+        "mfussenegger/nvim-dap",
+        dependencies = {
+            "rcarriga/nvim-dap-ui",
+            "nvim-neotest/nvim-nio",
+            "theHamsta/nvim-dap-virtual-text",
+            { "nvim-treesitter/nvim-treesitter" },
+        },
+    },
+    {
+        "jay-babu/mason-nvim-dap.nvim",
+        dependencies = {
+            "mfussenegger/nvim-dap",
+            "nvim-neotest/nvim-nio",
+        },
     },
 
     -- lspsaga
@@ -109,6 +135,26 @@ require("lazy").setup({
         event = "InsertEnter",
     },
 
+    --rust
+    {
+        "rust-lang/rust.vim",
+    },
+    {
+        "mrcjkb/rustaceanvim",
+        version = "^4",
+        key = {
+            fmt = { "rust" },
+        },
+        lazy = false,
+    },
+
+    -- typescript
+    {
+        "pmizio/typescript-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        opts = {},
+    },
+
     -- statusline style
     {
         "nvim-lualine/lualine.nvim",
@@ -134,9 +180,7 @@ require("lazy").setup({
     },
     { "preservim/vim-markdown", lazy = true, event = "InsertEnter" },
     { "previm/previm", lazy = true, event = "InsertEnter" },
-    { "tyru/open-browser.vim", lazy = true, event = "InsertEnter" },
-
-    -- Colorschema
+    { "tyru/open-browser.vim", lazy = true, event = "InsertEnter" }, -- Colorschema
     { "folke/tokyonight.nvim", lazy = true, event = "VimEnter" },
 
     -- Plantuml
