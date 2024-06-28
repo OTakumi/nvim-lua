@@ -24,13 +24,14 @@ require("lazy").setup({
     -- mason
     {
         "williamboman/mason.nvim",
-        lazy = true,
-        event = { "BufReadPre", "BufNewFile" },
         dependencies = {
-            { "williamboman/mason-lspconfig.nvim", lazy = true, event = { "BufReadPre", "BufNewFile" } },
-            { "neovim/nvim-lspconfig", lazy = true, event = { "BufReadPre", "BufNewFile" } },
-            { "hrsh7th/nvim-cmp", lazy = true, event = { "BufReadPre", "BufNewFile" } },
+            { "williamboman/mason-lspconfig.nvim", lazy = true, event = "InsertEnter" },
+            { "neovim/nvim-lspconfig", lazy = true, event = "InsertEnter" },
+            { "jose-elias-alvarez/null-ls.nvim", lazy = true, event = "InsertEnter" },
+            { "hrsh7th/nvim-cmp", lazy = true, event = "InsertEnter" },
         },
+        lazy = true,
+        event = "InsertEnter",
     },
     {
         "jay-babu/mason-null-ls.nvim",

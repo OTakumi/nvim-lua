@@ -17,14 +17,19 @@ require("mason-lspconfig").setup({
         "gopls",
         "jqls",
         "lua_ls",
-        "luau_lsp",
         "marksman",
-        "pylsp",
-        "sqlls",
+        "pyright",
+        "rust_analyzer",
+        "sqls",
         "taplo",
         "tsserver",
         "yamlls",
     },
+    function(server)
+        require("lspconfig")[server].setup({
+            capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        })
+    end,
 })
 
 require("mason-nvim-dap").setup({
@@ -41,6 +46,7 @@ require("mason-nvim-dap").setup({
 require("mason-null-ls").setup({
     function() end,
     ensure_installed = {
+        "black",
         "biome",
         "dockerfilelint",
         "dockerlint",
