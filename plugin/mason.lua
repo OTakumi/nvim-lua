@@ -25,6 +25,9 @@ require("mason-lspconfig").setup({
         "tsserver",
         "yamlls",
     },
+})
+
+require("mason-lspconfig").setup_handlers({
     function(server)
         require("lspconfig")[server].setup({
             capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
