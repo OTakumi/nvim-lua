@@ -60,11 +60,15 @@ M.lua = function()
     set_indent(4, false)
 end
 
+M.cpp = function()
+    set_indent(4, false)
+end
+
 return setmetatable(M, {
     __index = function()
         return function()
             print("Unexpected filetype")
-            set_indent(2, false)
+            set_indent(4, false)
         end
     end,
 })
