@@ -6,6 +6,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 })
 
 -- Utilities for creating configurations
+local defaults = require("formatter.defaults")
 local util = require("formatter.util")
 
 local biome_config = function()
@@ -94,6 +95,7 @@ require("formatter").setup({
                 return {
                     exe = "black",
                     args = {
+                        "-l 80",
                         "--quiet",
                         "-",
                     },
@@ -109,6 +111,22 @@ require("formatter").setup({
         -- ========== JavaScript ==========
         javascript = { require("formatter.filetypes.javascript").biome, biome_config },
         javascriptreact = { require("formatter.filetypes.javascriptreact").biome, biome_config },
+
+        -- ========== C++ ==========
+        cpp = {
+            require("formatter.filetypes.cpp").clangformat,
+            function()
+                return {
+                    exe = "clang-format",
+                    args = {
+                        "-i",
+                        "-style='{BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 80}'",
+                        util.escape_path(util.get_current_buffer_file_path()),
+                    },
+                    stdin = false,
+                }
+            end,
+        },
 
         -- Use the special "*" filetype for defining formatter configurations on
         -- any filetype

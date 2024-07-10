@@ -33,6 +33,15 @@ require("mason-lspconfig").setup_handlers({
             capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
         })
     end,
+    clangd = function()
+        require("lspconfig").clangd.setup({
+            capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            cmd = {
+                "clangd",
+                "--offset-encoding=utf-16",
+            },
+        })
+    end,
 })
 
 require("mason-nvim-dap").setup({
@@ -46,11 +55,16 @@ require("mason-nvim-dap").setup({
     handlers = {},
 })
 
+local null_ls = require("null-ls")
+null_ls.setup()
+
 require("mason-null-ls").setup({
     function() end,
     ensure_installed = {
         "black",
         "biome",
+        "cpplint",
+        "clang-format",
         "dockerfilelint",
         "dockerlint",
         "eslint",
@@ -65,5 +79,9 @@ require("mason-null-ls").setup({
         "stylelint",
         "yamllint",
     },
-    handlers = {},
+    handlers = {
+        cpplint = function(source_name, methods)
+            null_ls.register(null_ls.builtins.diagnostics.cpplint)
+        end,
+    },
 })
