@@ -34,6 +34,8 @@ map("n", "<C-l>", "<right>")
 -- Terminal
 map("n", "ft", "<cmd>FloatermNew<CR>")
 map("n", "fk", "<cmd>FloatermKill<CR>")
+-- Open terminal at height 15
+map("n", "tt", "<cmd>belowright new<CR><cmd>terminal<CR><cmd>resize 15<CR>")
 
 -- build-in LSP function
 -- keyboard shortcut
