@@ -170,6 +170,13 @@ require("lazy").setup({
         event = "VimEnter",
     },
 
+    -- cpp
+    {
+        "p00f/clangd_extensions.nvim",
+        lazy = true,
+        event = "VimEnter",
+    },
+
     -- markdown
     {
         "iamcco/markdown-preview.nvim",
