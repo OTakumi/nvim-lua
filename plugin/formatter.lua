@@ -1,13 +1,13 @@
+-- Utilities for creating configurations
+local defaults = require("formatter.defaults")
+local util = require("formatter.util")
+
 -- Automatically format on save
 vim.api.nvim_create_augroup("__formatter__", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
     group = "__formatter__",
     command = ":FormatWrite",
 })
-
--- Utilities for creating configurations
-local defaults = require("formatter.defaults")
-local util = require("formatter.util")
 
 local biome_config = function()
     return {
@@ -83,7 +83,7 @@ require("formatter").setup({
                         "--",
                         util.escape_path(util.get_current_buffer_file_path()),
                     },
-                    stdin = false,
+                    stdin = true,
                 }
             end,
         },
@@ -119,11 +119,10 @@ require("formatter").setup({
                 return {
                     exe = "clang-format",
                     args = {
-                        "-i",
+                        "--sort-includes",
                         "-style='{BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 80}'",
-                        util.escape_path(util.get_current_buffer_file_path()),
                     },
-                    stdin = false,
+                    stdin = true,
                 }
             end,
         },
