@@ -30,6 +30,12 @@ local biome_config = function()
     }
 end
 
+local yamlfmt_config = function()
+    return {
+        exe = "yamlfmt",
+    }
+end
+
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
 require("formatter").setup({
     -- Enable or disable logging
@@ -126,6 +132,10 @@ require("formatter").setup({
                 }
             end,
         },
+
+        -- ========== Yaml ==========
+        yaml = { require("formatter.filetypes.yaml").yamlfmt, yamlfmt_config },
+        yml = { require("formatter.filetypes.yaml").yamlfmt, yamlfmt_config },
 
         -- Use the special "*" filetype for defining formatter configurations on
         -- any filetype

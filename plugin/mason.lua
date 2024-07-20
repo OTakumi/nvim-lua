@@ -33,7 +33,8 @@ require("mason-lspconfig").setup_handlers({
             capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
         })
     end,
-    clangd = function()
+    ["rust_analyzer"] = function() end,
+    ["clangd"] = function()
         require("lspconfig").clangd.setup({
             capabilities = require("cmp_nvim_lsp").default_capabilities(),
             cmd = {
@@ -80,10 +81,7 @@ require("mason-null-ls").setup({
         "shellcheck",
         "stylelint",
         "yamllint",
+        "yamlfmt",
     },
-    handlers = {
-        cpplint = function(source_name, methods)
-            null_ls.register(null_ls.builtins.diagnostics.cpplint)
-        end,
-    },
+    handlers = {},
 })
