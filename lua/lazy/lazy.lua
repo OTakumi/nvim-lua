@@ -145,7 +145,7 @@ require("lazy").setup({
         "numToStr/Comment.nvim",
         opts = {},
         lazy = true,
-        event = "InsertEnter",
+        event = "VimEnter",
     },
 
     --rust
@@ -198,9 +198,8 @@ require("lazy").setup({
             vim.fn["mkdp#util#install"]()
         end,
     },
-    { "preservim/vim-markdown", lazy = true, event = "InsertEnter" },
-    { "previm/previm", lazy = true, event = "InsertEnter" },
     { "tyru/open-browser.vim", lazy = true, event = "InsertEnter" }, -- Colorschema
+
     { "folke/tokyonight.nvim", lazy = true, event = "VimEnter" },
 
     -- Plantuml
