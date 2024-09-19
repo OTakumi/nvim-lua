@@ -22,7 +22,7 @@ require("mason-lspconfig").setup({
         "rust_analyzer",
         "sqls",
         "taplo",
-        "tsserver",
+        "ts_ls",
         "yamlls",
     },
 })

@@ -82,15 +82,7 @@ require("formatter").setup({
         rust = {
             require("formatter.filetypes.rust").rustfmt,
             function()
-                return {
-                    exe = "rustfmt",
-                    args = {
-                        "--edition=2021",
-                        "--",
-                        util.escape_path(util.get_current_buffer_file_path()),
-                    },
-                    stdin = true,
-                }
+                return {}
             end,
         },
 
