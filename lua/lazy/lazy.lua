@@ -12,23 +12,16 @@ require("lazy").setup({
         },
         -- See Commands section for default commands if you want to lazy load on them
     },
-    {
-        "zbirenbaum/copilot.lua",
-    },
-    {
-        "nvim-lua/plenary.nvim",
-    },
+    { "zbirenbaum/copilot.lua" },
+    { "nvim-lua/plenary.nvim" },
 
     -- Simple plugins can be specified as strings
     { "rstacruz/vim-closer", lazy = true, event = "InsertEnter" },
 
     -- LSP
     -- mason
-    {
-        "williamboman/mason.nvim",
-        lazy = true,
-    },
-    { "williamboman/mason-lspconfig.nvim", lazy = true },
+    { "williamboman/mason.nvim", lazy = true },
+    { "williamboman/mason-lspconfig.nvim", lazy = true, opt = {} },
     { "neovim/nvim-lspconfig", lazy = true },
     {
         "jay-babu/mason-null-ls.nvim",
@@ -38,32 +31,25 @@ require("lazy").setup({
     { "nvimtools/none-ls.nvim", lazy = true },
 
     -- cmp plugins
-    {
-        "hrsh7th/nvim-cmp", -- The completion plugins
-        dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-cmdline",
-            "hrsh7th/cmp-vsnip",
-            "hrsh7th/vim-vsnip",
-            "hrsh7th/cmp-nvim-lua",
-        },
-        lazy = true,
-        event = "VimEnter",
-    },
+    { "hrsh7th/nvim-cmp", lazy = true },
+    { "hrsh7th/cmp-cmdline", event = "CmdlineEnter" },
+    { "hrsh7th/cmp-nvim-lua", lazy = true },
+    { "hrsh7th/cmp-nvim-lsp", lazy = true },
+    { "hrsh7th/cmp-buffer", lazy = true },
+    { "hrsh7th/cmp-path", lazy = true },
+    { "hrsh7th/cmp-vsnip", lazy = true, event = "InsertEnter" },
+    { "hrsh7th/vim-vsnip", lazy = true, event = "InsertEnter" },
 
     -- neotest
     {
         "nvim-neotest/neotest",
         dependencies = {
-            "nvim-neotest/nvim-nio",
             "alfaix/neotest-gtest",
-            "antoinemadec/FixCursorHold.nvim",
             "nvim-treesitter/nvim-treesitter",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-neotest/nvim-nio",
         },
-        lazy = true,
-        -- event = "InsertEnter",
+        event = "InsertEnter",
     },
 
     -- nvim-treesitter
@@ -71,7 +57,6 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         lazy = true,
-        -- event = "InsertEnter",
     },
 
     -- dap
@@ -90,6 +75,7 @@ require("lazy").setup({
     {
         "jay-babu/mason-nvim-dap.nvim",
         lazy = true,
+        event = "InsertEnter",
     },
 
     -- lspsaga
@@ -98,37 +84,25 @@ require("lazy").setup({
         dependencies = {
             "nvim-tree/nvim-web-devicons",
         },
-        lazy = true,
-        event = "VimEnter",
+        event = "InsertEnter",
     },
 
     -- formatters, linters
-    { "jay-babu/mason-null-ls.nvim", lazy = true, event = "InsertEnter" },
-    { "mhartington/formatter.nvim", lazy = true, event = "InsertEnter" },
+    { "mhartington/formatter.nvim", event = "CmdlineEnter" },
 
     -- file finder
     {
         "nvim-telescope/telescope.nvim",
         lazy = true,
-        event = "VimEnter",
     },
-
     {
         "nvim-telescope/telescope-file-browser.nvim",
-        lazy = true,
-        event = "VimEnter",
-    },
-
-    -- Terminal
-    {
-        "voldikss/vim-floaterm",
         lazy = true,
     },
 
     -- Todo highlight
     {
         "folke/todo-comments.nvim",
-        lazy = true,
         event = "InsertEnter",
     },
 
@@ -136,7 +110,6 @@ require("lazy").setup({
     {
         "numToStr/Comment.nvim",
         opts = {},
-        lazy = true,
         event = "VimEnter",
     },
 
@@ -195,5 +168,5 @@ require("lazy").setup({
     { "folke/tokyonight.nvim", lazy = true, event = "VimEnter" }, -- Colorschema
 
     -- Plantuml
-    { "aklt/plantuml-syntax", lazy = true, event = "InsertEnter" },
+    { "aklt/plantuml-syntax", lazy = true },
 })

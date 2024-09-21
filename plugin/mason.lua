@@ -18,8 +18,8 @@ require("mason-lspconfig").setup({
         "jqls",
         "lua_ls",
         "marksman",
-        "pyright",
         "rust_analyzer",
+        "pylsp",
         "sqls",
         "taplo",
         "ts_ls",
@@ -45,6 +45,20 @@ require("mason-lspconfig").setup_handlers({
         require("clangd_extensions.inlay_hints").setup_autocmd()
         require("clangd_extensions.inlay_hints").set_inlay_hints()
     end,
+    ["pylsp"] = function()
+        require("lspconfig").pylsp.setup({
+            settings = {
+                pylsp = {
+                    plugins = {
+                        pycodestyle = {
+                            ignore = { "W391" },
+                            maxLineLength = 80,
+                        },
+                    },
+                },
+            },
+        })
+    end,
 })
 
 require("mason-nvim-dap").setup({
@@ -57,9 +71,6 @@ require("mason-nvim-dap").setup({
     },
     handlers = {},
 })
-
-local null_ls = require("null-ls")
-null_ls.setup()
 
 require("mason-null-ls").setup({
     function() end,
@@ -84,4 +95,31 @@ require("mason-null-ls").setup({
         "yamlfmt",
     },
     handlers = {},
+})
+
+local null_ls = require("null-ls")
+null_ls.setup({
+    sources = {
+        -- linters
+        null_ls.builtins.diagnostics.golangci_lint,
+        null_ls.builtins.diagnostics.hadolint,
+        null_ls.builtins.diagnostics.yamllint,
+        null_ls.builtins.diagnostics.pylint.with({
+            diagnostics_postprocess = function(diagnostic)
+                diagnostic.code = diagnostic.message_id
+            end,
+        }),
+
+        -- formatters
+        null_ls.builtins.formatting.isort,
+        null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.biome,
+        null_ls.builtins.formatting.clang_format,
+        null_ls.builtins.formatting.gofmt,
+        null_ls.builtins.formatting.markdownlint,
+        null_ls.builtins.formatting.prettierd,
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.shellcheck,
+        null_ls.builtins.formatting.yamlfmt,
+    },
 })
