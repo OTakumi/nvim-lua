@@ -30,6 +30,12 @@ local biome_config = function()
     }
 end
 
+local yamlfmt_config = function()
+    return {
+        exe = "yamlfmt",
+    }
+end
+
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
 require("formatter").setup({
     -- Enable or disable logging
@@ -76,15 +82,7 @@ require("formatter").setup({
         rust = {
             require("formatter.filetypes.rust").rustfmt,
             function()
-                return {
-                    exe = "rustfmt",
-                    args = {
-                        "--edition=2021",
-                        "--",
-                        util.escape_path(util.get_current_buffer_file_path()),
-                    },
-                    stdin = true,
-                }
+                return {}
             end,
         },
 
@@ -95,7 +93,7 @@ require("formatter").setup({
                 return {
                     exe = "black",
                     args = {
-                        "-l 80",
+                        "-l 119",
                         "--quiet",
                         "-",
                     },
@@ -127,12 +125,24 @@ require("formatter").setup({
             end,
         },
 
+        -- ========== Yaml ==========
+        yaml = { require("formatter.filetypes.yaml").yamlfmt, yamlfmt_config },
+        yml = { require("formatter.filetypes.yaml").yamlfmt, yamlfmt_config },
+
         -- Use the special "*" filetype for defining formatter configurations on
         -- any filetype
         ["*"] = {
             -- "formatter.filetypes.any" defines default configurations for any
             -- filetype
             require("formatter.filetypes.any").remove_trailing_whitespace,
+        },
+
+        -- ========== json ==========
+        json = {
+            require("formatter.filetypes.json").jq,
+            function()
+                return {}
+            end,
         },
     },
 })

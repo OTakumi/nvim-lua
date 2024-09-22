@@ -18,11 +18,11 @@ require("mason-lspconfig").setup({
         "jqls",
         "lua_ls",
         "marksman",
-        "pyright",
         "rust_analyzer",
+        "pylsp",
         "sqls",
         "taplo",
-        "tsserver",
+        "ts_ls",
         "yamlls",
     },
 })
@@ -33,7 +33,8 @@ require("mason-lspconfig").setup_handlers({
             capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
         })
     end,
-    clangd = function()
+    ["rust_analyzer"] = function() end,
+    ["clangd"] = function()
         require("lspconfig").clangd.setup({
             capabilities = require("cmp_nvim_lsp").default_capabilities(),
             cmd = {
@@ -43,6 +44,20 @@ require("mason-lspconfig").setup_handlers({
         })
         require("clangd_extensions.inlay_hints").setup_autocmd()
         require("clangd_extensions.inlay_hints").set_inlay_hints()
+    end,
+    ["pylsp"] = function()
+        require("lspconfig").pylsp.setup({
+            settings = {
+                pylsp = {
+                    plugins = {
+                        pycodestyle = {
+                            ignore = { "W391" },
+                            maxLineLength = 119,
+                        },
+                    },
+                },
+            },
+        })
     end,
 })
 
@@ -57,9 +72,6 @@ require("mason-nvim-dap").setup({
     handlers = {},
 })
 
-local null_ls = require("null-ls")
-null_ls.setup()
-
 require("mason-null-ls").setup({
     function() end,
     ensure_installed = {
@@ -72,18 +84,39 @@ require("mason-null-ls").setup({
         "eslint",
         "gofmt",
         "golangci-lint",
-        "jsonlint",
         "markdownlint",
         "prettier",
         "pylint",
         "stylua",
-        "shellcheck",
         "stylelint",
         "yamllint",
+        "yamlfmt",
     },
-    handlers = {
-        cpplint = function(source_name, methods)
-            null_ls.register(null_ls.builtins.diagnostics.cpplint)
-        end,
+    handlers = {},
+})
+
+local null_ls = require("null-ls")
+null_ls.setup({
+    sources = {
+        -- linters
+        null_ls.builtins.diagnostics.golangci_lint,
+        null_ls.builtins.diagnostics.hadolint,
+        null_ls.builtins.diagnostics.yamllint,
+        null_ls.builtins.diagnostics.pylint.with({
+            diagnostics_postprocess = function(diagnostic)
+                diagnostic.code = diagnostic.message_id
+            end,
+        }),
+
+        -- formatters
+        null_ls.builtins.formatting.isort,
+        null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.biome,
+        null_ls.builtins.formatting.clang_format,
+        null_ls.builtins.formatting.gofmt,
+        null_ls.builtins.formatting.markdownlint,
+        null_ls.builtins.formatting.prettierd,
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.yamlfmt,
     },
 })
