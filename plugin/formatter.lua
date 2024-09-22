@@ -93,7 +93,7 @@ require("formatter").setup({
                 return {
                     exe = "black",
                     args = {
-                        "-l 80",
+                        "-l 119",
                         "--quiet",
                         "-",
                     },

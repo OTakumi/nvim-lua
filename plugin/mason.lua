@@ -52,7 +52,7 @@ require("mason-lspconfig").setup_handlers({
                     plugins = {
                         pycodestyle = {
                             ignore = { "W391" },
-                            maxLineLength = 80,
+                            maxLineLength = 119,
                         },
                     },
                 },
