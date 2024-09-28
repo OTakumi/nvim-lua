@@ -59,6 +59,15 @@ require("mason-lspconfig").setup_handlers({
             },
         })
     end,
+    ["gopls"] = function()
+        require("lspconfig").gopls.setup({
+            analyzes = {
+                unusedparams = true,
+            },
+            staticcheck = true,
+            gofumpt = true,
+        })
+    end,
 })
 
 require("mason-nvim-dap").setup({
@@ -83,6 +92,8 @@ require("mason-null-ls").setup({
         "dockerlint",
         "eslint",
         "gofmt",
+        "gofumpt",
+        "goimports",
         "golangci-lint",
         "markdownlint",
         "prettier",
@@ -114,6 +125,8 @@ null_ls.setup({
         null_ls.builtins.formatting.biome,
         null_ls.builtins.formatting.clang_format,
         null_ls.builtins.formatting.gofmt,
+        null_ls.builtins.formatting.gofumpt,
+        null_ls.builtins.formatting.goimports,
         null_ls.builtins.formatting.markdownlint,
         null_ls.builtins.formatting.prettierd,
         null_ls.builtins.formatting.stylua,
