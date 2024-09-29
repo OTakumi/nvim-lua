@@ -146,6 +146,14 @@ require("formatter").setup({
             end,
         },
 
+        -- ========== HTML ==========
+        html = {
+            require("formatter.filetypes.html").prettier,
+            function()
+                return {}
+            end,
+        },
+
         -- ========== Any ==========
         -- Use the special "*" filetype for defining formatter configurations on
         -- any filetype
