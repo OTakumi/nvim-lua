@@ -67,6 +67,7 @@ require("formatter").setup({
                     exe = "stylua",
                     args = {
                         "--indent-type=spaces",
+                        "--indent-width=4",
                         "--search-parent-directories",
                         "--stdin-filepath",
                         util.escape_path(util.get_current_buffer_file_path()),
@@ -125,17 +126,17 @@ require("formatter").setup({
             end,
         },
 
+        -- ========== Go ==========
+        go = {
+            require("formatter.filetypes.go").gofmt,
+            function()
+                return {}
+            end,
+        },
+
         -- ========== Yaml ==========
         yaml = { require("formatter.filetypes.yaml").yamlfmt, yamlfmt_config },
         yml = { require("formatter.filetypes.yaml").yamlfmt, yamlfmt_config },
-
-        -- Use the special "*" filetype for defining formatter configurations on
-        -- any filetype
-        ["*"] = {
-            -- "formatter.filetypes.any" defines default configurations for any
-            -- filetype
-            require("formatter.filetypes.any").remove_trailing_whitespace,
-        },
 
         -- ========== json ==========
         json = {
@@ -143,6 +144,15 @@ require("formatter").setup({
             function()
                 return {}
             end,
+        },
+
+        -- ========== Any ==========
+        -- Use the special "*" filetype for defining formatter configurations on
+        -- any filetype
+        ["*"] = {
+            -- "formatter.filetypes.any" defines default configurations for any
+            -- filetype
+            require("formatter.filetypes.any").remove_trailing_whitespace,
         },
     },
 })
