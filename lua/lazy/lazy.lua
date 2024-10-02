@@ -1,19 +1,8 @@
 require("lazy").setup({
     -- Github copilot
-    { "github/copilot.vim", lazy = false },
-
-    -- Copilot chat
-    {
-        "CopilotC-Nvim/CopilotChat.nvim",
-        branch = "canary",
-        opts = {
-            debug = true, -- Enable debugging
-            -- See Configuration section for rest
-        },
-        -- See Commands section for default commands if you want to lazy load on them
-    },
-    { "zbirenbaum/copilot.lua" },
-    { "nvim-lua/plenary.nvim" },
+    { "github/copilot.vim", lazy = false, opt = {} },
+    { "zbirenbaum/copilot.lua", lazy = true },
+    { "nvim-lua/plenary.nvim", lazy = true },
 
     -- Simple plugins can be specified as strings
     { "rstacruz/vim-closer", lazy = true, event = "InsertEnter" },
@@ -151,7 +140,27 @@ require("lazy").setup({
     -- cpp
     {
         "p00f/clangd_extensions.nvim",
+        lazy = true,
         ft = { "c", "cpp" },
+    },
+
+    -- Git
+    {
+        "dinhhuy258/git.nvim",
+        opts = {},
+        lazy = true,
+        event = "InsertEnter",
+    },
+
+    -- toggleterm
+    {
+        "akinsho/toggleterm.nvim",
+        version = "*",
+        opts = {
+            direction = "float",
+        },
+        lazy = true,
+        event = "VimEnter",
     },
 
     -- markdown
