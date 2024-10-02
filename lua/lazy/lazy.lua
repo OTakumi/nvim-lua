@@ -173,6 +173,7 @@ require("lazy").setup({
             vim.fn["mkdp#util#install"]()
         end,
     },
+
     { "tyru/open-browser.vim", lazy = true, ft = "markdown" },
     { "folke/tokyonight.nvim", lazy = true, event = "VimEnter" }, -- Colorschema
 
