@@ -6,7 +6,6 @@ local options = {
     fileencoding = "utf-8",
     title = true,
     backup = false,
-    clipboard = "unnamed",
     autoindent = true,
     tabstop = 4,
     softtabstop = 4,
@@ -35,3 +34,5 @@ vim.opt.listchars = {
     space = "_",
     tab = ">-",
 }
+
+vim.opt.clipboard:append({"unnamedplus"})
