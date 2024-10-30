@@ -115,14 +115,6 @@ require("lazy").setup({
         ft = "rust",
     },
 
-    -- typescript
-    {
-        "pmizio/typescript-tools.nvim",
-        opts = {},
-        lazy = true,
-        ft = { "typescript", "typescriptreact" },
-    },
-
     -- statusline style
     {
         "nvim-lualine/lualine.nvim",

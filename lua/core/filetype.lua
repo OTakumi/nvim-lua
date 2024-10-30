@@ -12,6 +12,30 @@ local function set_indent(tab_length, is_hard_tab)
     vim.bo.tabstop = tab_length
 end
 
+M.typescript = function()
+    set_indent(2, false)
+end
+
+M.javascript = function()
+    set_indent(2, false)
+end
+
+M.tsx = function()
+    set_indent(2, false)
+end
+
+M.jsx = function()
+    set_indent(2, false)
+end
+
+M.typescriptreact = function()
+    set_indent(2, false)
+end
+
+M.javascriptreact = function()
+    set_indent(2, false)
+end
+
 M.html = function()
     set_indent(2, false)
 end

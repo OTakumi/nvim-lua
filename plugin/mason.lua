@@ -90,7 +90,6 @@ require("mason-null-ls").setup({
         "clang-format",
         "dockerfilelint",
         "dockerlint",
-        "eslint",
         "gofmt",
         "gofumpt",
         "goimports",
