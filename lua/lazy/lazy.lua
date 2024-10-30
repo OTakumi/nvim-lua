@@ -155,6 +155,14 @@ require("lazy").setup({
         event = "VimEnter",
     },
 
+    {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    ---@module "ibl"
+    ---@type ibl.config
+    opts = {},
+},
+
     -- markdown
     {
         "iamcco/markdown-preview.nvim",
