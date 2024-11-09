@@ -36,6 +36,3 @@ vim.api.nvim_create_autocmd("FileType", {
         ft[args.match]()
     end,
 })
-
--- markdown preview config
-vim.g.mkdp_echo_preview_url = 1

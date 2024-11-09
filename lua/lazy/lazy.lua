@@ -89,12 +89,6 @@ require("lazy").setup({
         lazy = true,
     },
 
-    -- Todo highlight
-    {
-        "folke/todo-comments.nvim",
-        event = "InsertEnter",
-    },
-
     -- comments
     {
         "numToStr/Comment.nvim",
@@ -136,14 +130,6 @@ require("lazy").setup({
         ft = { "c", "cpp" },
     },
 
-    -- Git
-    {
-        "dinhhuy258/git.nvim",
-        opts = {},
-        lazy = true,
-        event = "InsertEnter",
-    },
-
     -- toggleterm
     {
         "akinsho/toggleterm.nvim",
@@ -156,27 +142,12 @@ require("lazy").setup({
     },
 
     {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    ---@module "ibl"
-    ---@type ibl.config
-    opts = {},
-},
-
-    -- markdown
-    {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        lazy = true,
-        ft = "markdown",
-        build = function()
-            vim.fn["mkdp#util#install"]()
-        end,
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        ---@module "ibl"
+        ---@type ibl.config
+        opts = {},
     },
 
-    { "tyru/open-browser.vim", lazy = true, ft = "markdown" },
-    { "folke/tokyonight.nvim", lazy = true, event = "VimEnter" }, -- Colorschema
-
-    -- Plantuml
-    { "aklt/plantuml-syntax", lazy = true },
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 })

@@ -88,12 +88,10 @@ require("mason-null-ls").setup({
         "biome",
         "cpplint",
         "clang-format",
-        "dockerfilelint",
-        "dockerlint",
         "gofmt",
         "gofumpt",
         "goimports",
-        "golangci-lint",
+        "hadolint",
         "markdownlint",
         "prettier",
         "pylint",
@@ -109,7 +107,6 @@ local null_ls = require("null-ls")
 null_ls.setup({
     sources = {
         -- linters
-        null_ls.builtins.diagnostics.golangci_lint,
         null_ls.builtins.diagnostics.hadolint,
         null_ls.builtins.diagnostics.yamllint,
         null_ls.builtins.diagnostics.pylint.with({
@@ -117,6 +114,7 @@ null_ls.setup({
                 diagnostic.code = diagnostic.message_id
             end,
         }),
+        null_ls.builtins.diagnostics.hadolint,
 
         -- formatters
         null_ls.builtins.formatting.isort,
