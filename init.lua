@@ -23,7 +23,6 @@ require("core/keymaps")
 require("core/options")
 require("core/filetype")
 require("core/colorscheme")
-require("core/rust")
 
 -- filetype configurations
 local ft = require("core/filetype")
