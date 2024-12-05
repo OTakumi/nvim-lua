@@ -4,6 +4,13 @@ require("lazy").setup({
     { "zbirenbaum/copilot.lua", lazy = true },
     { "nvim-lua/plenary.nvim", lazy = true },
 
+    -- Git
+    {
+        "tpope/vim-fugitive",
+        lazy = true,
+        event = "VimEnter",
+    },
+
     -- Simple plugins can be specified as strings
     { "rstacruz/vim-closer", lazy = true, event = "InsertEnter" },
 
