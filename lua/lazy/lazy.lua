@@ -55,6 +55,7 @@ require("lazy").setup({
     },
     {
         "rcarriga/nvim-dap-ui",
+        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
         lazy = true,
     },
     {
@@ -99,14 +100,10 @@ require("lazy").setup({
     --rust
     {
         "rust-lang/rust.vim",
-        lazy = true,
-        ft = "rust",
     },
     {
         "mrcjkb/rustaceanvim",
-        version = "^4",
-        lazy = true,
-        ft = "rust",
+        version = "^5",
     },
 
     -- statusline style
@@ -146,6 +143,8 @@ require("lazy").setup({
         main = "ibl",
         ---@module "ibl"
         ---@type ibl.config
+        lazy = true,
+        event = "VimEnter",
         opts = {},
     },
 

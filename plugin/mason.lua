@@ -18,7 +18,7 @@ require("mason-lspconfig").setup({
         "jqls",
         "lua_ls",
         "marksman",
-        "rust_analyzer",
+        -- "rust_analyzer",
         "pylsp",
         "sqls",
         "taplo",
@@ -33,7 +33,7 @@ require("mason-lspconfig").setup_handlers({
             capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
         })
     end,
-    ["rust_analyzer"] = function() end,
+    -- ["rust_analyzer"] = function() end,
     ["clangd"] = function()
         require("lspconfig").clangd.setup({
             capabilities = require("cmp_nvim_lsp").default_capabilities(),
