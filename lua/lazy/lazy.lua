@@ -2,13 +2,12 @@ require("lazy").setup({
     -- Github copilot
     { "github/copilot.vim", lazy = false, opt = {} },
     { "zbirenbaum/copilot.lua", lazy = true },
-    { "nvim-lua/plenary.nvim", lazy = true },
 
     -- Git
     {
         "tpope/vim-fugitive",
         lazy = true,
-        event = "VimEnter",
+        event = "InsertEnter",
     },
 
     -- Simple plugins can be specified as strings
@@ -22,7 +21,7 @@ require("lazy").setup({
     {
         "jay-babu/mason-null-ls.nvim",
         lazy = true,
-        event = { "BufReadPre", "BufNewFile" },
+        -- event = { "BufReadPre", "BufNewFile" },
     },
     { "nvimtools/none-ls.nvim", lazy = true },
 
@@ -33,20 +32,8 @@ require("lazy").setup({
     { "hrsh7th/cmp-nvim-lsp", lazy = true },
     { "hrsh7th/cmp-buffer", lazy = true },
     { "hrsh7th/cmp-path", lazy = true },
-    { "hrsh7th/cmp-vsnip", lazy = true, event = "InsertEnter" },
-    { "hrsh7th/vim-vsnip", lazy = true, event = "InsertEnter" },
-
-    -- neotest
-    {
-        "nvim-neotest/neotest",
-        dependencies = {
-            "alfaix/neotest-gtest",
-            "nvim-treesitter/nvim-treesitter",
-            "antoinemadec/FixCursorHold.nvim",
-            "nvim-neotest/nvim-nio",
-        },
-        event = "InsertEnter",
-    },
+    -- { "hrsh7th/cmp-vsnip", lazy = true, event = "InsertEnter" },
+    -- { "hrsh7th/vim-vsnip", lazy = true, event = "InsertEnter" },
 
     -- nvim-treesitter
     {
@@ -72,7 +59,6 @@ require("lazy").setup({
     {
         "jay-babu/mason-nvim-dap.nvim",
         lazy = true,
-        event = "InsertEnter",
     },
 
     -- lspsaga
@@ -81,7 +67,6 @@ require("lazy").setup({
         dependencies = {
             "nvim-tree/nvim-web-devicons",
         },
-        event = "InsertEnter",
     },
 
     -- formatters, linters
@@ -107,10 +92,14 @@ require("lazy").setup({
     --rust
     {
         "rust-lang/rust.vim",
+        lazy = true,
+        ft = { "rust" },
     },
     {
         "mrcjkb/rustaceanvim",
         version = "^5",
+        lazy = true,
+        ft = { "rust" },
     },
 
     -- statusline style
@@ -132,17 +121,6 @@ require("lazy").setup({
         "p00f/clangd_extensions.nvim",
         lazy = true,
         ft = { "c", "cpp" },
-    },
-
-    -- toggleterm
-    {
-        "akinsho/toggleterm.nvim",
-        version = "*",
-        opts = {
-            direction = "float",
-        },
-        lazy = true,
-        event = "VimEnter",
     },
 
     {

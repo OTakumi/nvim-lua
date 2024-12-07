@@ -21,7 +21,6 @@ vim.g.loaded_netrwPlugin = 1
 require("lazy/lazy")
 require("core/keymaps")
 require("core/options")
-require("core/filetype")
 require("core/colorscheme")
 
 -- filetype configurations
