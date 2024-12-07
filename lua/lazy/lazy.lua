@@ -32,8 +32,8 @@ require("lazy").setup({
     { "hrsh7th/cmp-nvim-lsp", lazy = true },
     { "hrsh7th/cmp-buffer", lazy = true },
     { "hrsh7th/cmp-path", lazy = true },
-    -- { "hrsh7th/cmp-vsnip", lazy = true, event = "InsertEnter" },
-    -- { "hrsh7th/vim-vsnip", lazy = true, event = "InsertEnter" },
+    { "hrsh7th/cmp-vsnip", lazy = true, event = "InsertEnter" },
+    { "hrsh7th/vim-vsnip", lazy = true, event = "InsertEnter" },
 
     -- nvim-treesitter
     {
