@@ -23,14 +23,11 @@ require("core/keymaps")
 require("core/options")
 require("core/colorscheme")
 
--- filetype configurations
-local ft = require("core/filetype")
-
 vim.api.nvim_create_augroup("vimrc_augroup", {})
-vim.api.nvim_create_autocmd("FileType", {
-    group = "vimrc_augroup",
-    pattern = "*",
-    callback = function(args)
-        ft[args.match]()
-    end,
-})
+
+vim.treesitter.start = (function(wrapped)
+    return function(bufnr, lang)
+        lang = lang or vim.fn.getbufvar(bufnr or "", "&filetype")
+        pcall(wrapped, bufnr, lang)
+    end
+end)(vim.treesitter.start)
