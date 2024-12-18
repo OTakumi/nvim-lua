@@ -1,6 +1,3 @@
-vim.api.nvim_exec("language en_US.utf8", true)
-vim.api.nvim_exec("language message en_US.utf8", true)
-
 local options = {
     encoding = "utf-8",
     fileencoding = "utf-8",
@@ -35,4 +32,4 @@ vim.opt.listchars = {
     tab = ">-",
 }
 
-vim.opt.clipboard:append({"unnamedplus"})
+vim.opt.clipboard:append({ "unnamedplus" })
