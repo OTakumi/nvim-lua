@@ -1,7 +1,36 @@
 require("lazy").setup({
     -- Github copilot
-    { "github/copilot.vim", lazy = false, opt = {} },
-    { "zbirenbaum/copilot.lua", lazy = true },
+    { "github/copilot.vim", lazy = false },
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        opts = {
+            suggesion = { enabled = false },
+            panel = { enabled = false },
+            copilot_node_command = "node",
+            filetypes = {
+                javascript = true,
+                typescript = true,
+                typescriptreact = true,
+                javascriptreact = true,
+                lua = true,
+                python = true,
+                rust = true,
+                go = true,
+                sh = true,
+                yaml = true,
+                json = true,
+                html = true,
+                css = true,
+                help = true,
+                gitcommit = true,
+                gitrebase = true,
+                hgcommit = true,
+                markdown = true,
+                ["*"] = false,
+            },
+        },
+    },
 
     -- Git
     {
@@ -35,11 +64,16 @@ require("lazy").setup({
     { "hrsh7th/cmp-vsnip", lazy = true, event = "InsertEnter" },
     { "hrsh7th/vim-vsnip", lazy = true, event = "InsertEnter" },
 
+    {
+        "zbirenbaum/copilot-cmp",
+        lazy = true,
+        event = "InsertEnter",
+    },
+
     -- nvim-treesitter
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        lazy = true,
     },
 
     -- dap
