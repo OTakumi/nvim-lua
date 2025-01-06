@@ -5,7 +5,7 @@ require("lazy").setup({
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
         opts = {
-            suggesion = { enabled = false },
+            suggesion = { enabled = true },
             panel = { enabled = false },
             copilot_node_command = "node",
             filetypes = {
@@ -30,6 +30,16 @@ require("lazy").setup({
                 ["*"] = false,
             },
         },
+    },
+
+    {
+        "CopilotC-Nvim/CopilotChat.nvim",
+        dependencies = {
+            { "github/copilot.vim", "zbirenbaum/copilot.lua" }, -- or zbirenbaum/copilot.lua
+            { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+        },
+        build = "make tiktoken", -- Only on MacOS or Linux
+        opts = {},
     },
 
     -- Git
@@ -63,7 +73,6 @@ require("lazy").setup({
     { "hrsh7th/cmp-path", lazy = true },
     { "hrsh7th/cmp-vsnip", lazy = true, event = "InsertEnter" },
     { "hrsh7th/vim-vsnip", lazy = true, event = "InsertEnter" },
-
     {
         "zbirenbaum/copilot-cmp",
         lazy = true,
