@@ -26,6 +26,7 @@ require("lazy/lazy")
 require("core/keymaps")
 require("core/options")
 require("core/colorscheme")
+require("core/filetype")
 
 vim.api.nvim_create_augroup("vimrc_augroup", {})
 
@@ -35,3 +36,14 @@ vim.treesitter.start = (function(wrapped)
         pcall(wrapped, bufnr, lang)
     end
 end)(vim.treesitter.start)
+
+local filetype_conf = require("core/filetype")
+
+vim.api.nvim_create_augroup("vimrc_augroup", {})
+vim.api.nvim_create_autocmd("FileType", {
+    group = "vimrc_augroup",
+    pattern = "*",
+    callback = function(args)
+        filetype_conf[args.match]()
+    end,
+})
