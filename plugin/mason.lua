@@ -42,8 +42,8 @@ require("mason-lspconfig").setup_handlers({
                 "--offset-encoding=utf-16",
             },
         })
-        require("clangd_extensions.inlay_hints").setup_autocmd()
-        require("clangd_extensions.inlay_hints").set_inlay_hints()
+        -- require("clangd_extensions.inlay_hints").setup_autocmd()
+        -- require("clangd_extensions.inlay_hints").set_inlay_hints()
     end,
     ["pylsp"] = function()
         require("lspconfig").pylsp.setup({
@@ -51,8 +51,21 @@ require("mason-lspconfig").setup_handlers({
                 pylsp = {
                     plugins = {
                         pycodestyle = {
+                            ignore = { "W391", "E713" },
+                            maxLineLength = 120,
+                        },
+                        pylint = {
+                            enabled = true,
+                            args = {
+                                "--disable=C0114,C0115,C0116,C0301",
+                            },
+                        },
+                        black = {
+                            lineLength = 120,
+                        },
+                        flake8 = {
                             ignore = { "W391" },
-                            maxLineLength = 119,
+                            maxLineLength = 120,
                         },
                     },
                 },
@@ -66,6 +79,15 @@ require("mason-lspconfig").setup_handlers({
             },
             staticcheck = true,
             gofumpt = true,
+        })
+    end,
+    ["taplo"] = function()
+        require("lspconfig").taplo.setup({
+            settings = {
+                taplo = {
+                    checkOnSave = true,
+                },
+            },
         })
     end,
 })
@@ -84,7 +106,7 @@ require("mason-nvim-dap").setup({
 require("mason-null-ls").setup({
     function() end,
     ensure_installed = {
-        "black",
+        -- "black",
         "biome",
         "cpplint",
         "clang-format",
@@ -94,7 +116,7 @@ require("mason-null-ls").setup({
         "hadolint",
         "markdownlint",
         "prettier",
-        "pylint",
+        -- "pylint",
         "stylua",
         "stylelint",
         "yamllint",
@@ -109,16 +131,16 @@ null_ls.setup({
         -- linters
         null_ls.builtins.diagnostics.hadolint,
         null_ls.builtins.diagnostics.yamllint,
-        null_ls.builtins.diagnostics.pylint.with({
-            diagnostics_postprocess = function(diagnostic)
-                diagnostic.code = diagnostic.message_id
-            end,
-        }),
+        -- null_ls.builtins.diagnostics.pylint.with({
+        --     diagnostics_postprocess = function(diagnostic)
+        --         diagnostic.code = diagnostic.message_id
+        --     end,
+        -- }),
         null_ls.builtins.diagnostics.hadolint,
 
         -- formatters
         null_ls.builtins.formatting.isort,
-        null_ls.builtins.formatting.black,
+        -- null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.biome,
         null_ls.builtins.formatting.clang_format,
         null_ls.builtins.formatting.gofmt,

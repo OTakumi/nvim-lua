@@ -39,7 +39,74 @@ require("lazy").setup({
             { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
         },
         build = "make tiktoken", -- Only on MacOS or Linux
-        opts = {},
+        opts = {
+            model = "claude-3.7-sonnet",
+        },
+    },
+
+    -- avante
+    {
+        "yetone/avante.nvim",
+        event = "VeryLazy",
+        lazy = false,
+        version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+        opts = {
+            ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
+            provider = "claude", -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
+            -- WARNING: Since auto-suggestions are a high-frequency operation and therefore expensive,
+            -- currently designating it as `copilot` provider is dangerous because: https://github.com/yetone/avante.nvim/issues/1048
+            -- Of course, you can reduce the request frequency by increasing `suggestion.debounce`.
+            -- add any opts here
+            auto_suggestions_provider = "claude",
+            cursor_applying_provider = nil, -- The provider used in the applying phase of Cursor Planning Mode, defaults to nil, when nil uses Config.provider as the provider for the applying phase
+            claude = {
+                endpoint = "https://api.anthropic.com",
+                model = "claude-3-5-sonnet-20241022",
+                temperature = 0,
+                max_tokens = 4096,
+            },
+        },
+        -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+        build = "make",
+        -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "stevearc/dressing.nvim",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            --- The below dependencies are optional,
+            "echasnovski/mini.pick", -- for file_selector provider mini.pick
+            "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+            "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+            "ibhagwan/fzf-lua", -- for file_selector provider fzf
+            "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+            "zbirenbaum/copilot.lua", -- for providers='copilot'
+            {
+                -- support for image pasting
+                "HakonHarnes/img-clip.nvim",
+                event = "VeryLazy",
+                opts = {
+                    -- recommended settings
+                    default = {
+                        embed_image_as_base64 = false,
+                        prompt_for_file_name = false,
+                        drag_and_drop = {
+                            insert_mode = true,
+                        },
+                        -- required for Windows users
+                        use_absolute_path = true,
+                    },
+                },
+            },
+            {
+                -- Make sure to set this up properly if you have lazy=true
+                "MeanderingProgrammer/render-markdown.nvim",
+                opts = {
+                    file_types = { "markdown", "Avante" },
+                },
+                ft = { "markdown", "Avante" },
+            },
+        },
     },
 
     -- Git
@@ -177,4 +244,25 @@ require("lazy").setup({
     },
 
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+
+    {
+        "epwalsh/obsidian.nvim",
+        version = "*", -- recommended, use latest release instead of latest commit
+        lazy = true,
+        ft = "markdown",
+        -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+        -- event = {
+        --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+        --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
+        --   -- refer to `:h file-pattern` for more examples
+        --   "BufReadPre path/to/my-vault/*.md",
+        --   "BufNewFile path/to/my-vault/*.md",
+        -- },
+        dependencies = {
+            -- Required.
+            "nvim-lua/plenary.nvim",
+
+            -- see below for full list of optional dependencies 👇
+        },
+    },
 })
