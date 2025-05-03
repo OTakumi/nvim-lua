@@ -5,11 +5,12 @@ cmp.setup({
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
             vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+            -- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
         end,
     },
     window = {
         -- completion = cmp.config.window.bordered(),
-        -- documentation = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -19,8 +20,11 @@ cmp.setup({
         ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
     sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "luasnip" }, -- For luasnip users.
+        { name = "nvim_lsp", group_index = 2 },
+        -- { name = "luasnip", group_index = 2 }, -- For luasnip users.
+        { name = "copilot", group_index = 2 }, -- For copilot users.
+        { name = "vsnip", group_index = 2 }, -- For vsnip users.
+        { name = "path" },
     }, {
         { name = "buffer" },
     }),
