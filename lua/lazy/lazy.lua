@@ -1,34 +1,13 @@
 require("lazy").setup({
     -- Github copilot
-    { "github/copilot.vim", lazy = false },
+    -- { "github/copilot.vim", lazy = false },
     {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
+        lazy = true,
         opts = {
-            suggesion = { enabled = true },
             panel = { enabled = false },
-            copilot_node_command = "node",
-            filetypes = {
-                javascript = true,
-                typescript = true,
-                typescriptreact = true,
-                javascriptreact = true,
-                lua = true,
-                python = true,
-                rust = true,
-                go = true,
-                sh = true,
-                yaml = true,
-                json = true,
-                html = true,
-                css = true,
-                help = true,
-                gitcommit = true,
-                gitrebase = true,
-                hgcommit = true,
-                markdown = true,
-                ["*"] = false,
-            },
+            suggestion = { enabled = false },
         },
     },
 
@@ -38,9 +17,11 @@ require("lazy").setup({
             { "github/copilot.vim", "zbirenbaum/copilot.lua" }, -- or zbirenbaum/copilot.lua
             { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
         },
+        lazy = true,
+        event = "CmdlineEnter",
         build = "make tiktoken", -- Only on MacOS or Linux
         opts = {
-            model = "claude-3.7-sonnet",
+            model = "claude-3.7-sonnet-thought",
         },
     },
 
@@ -132,7 +113,6 @@ require("lazy").setup({
     { "nvimtools/none-ls.nvim", lazy = true },
 
     -- cmp plugins
-    { "hrsh7th/nvim-cmp", lazy = true },
     { "hrsh7th/cmp-cmdline", event = "CmdlineEnter" },
     { "hrsh7th/cmp-nvim-lua", lazy = true },
     { "hrsh7th/cmp-nvim-lsp", lazy = true },
@@ -144,7 +124,9 @@ require("lazy").setup({
         "zbirenbaum/copilot-cmp",
         lazy = true,
         event = "InsertEnter",
+        opts = {},
     },
+    { "hrsh7th/nvim-cmp", lazy = true, event = "InsertEnter" },
 
     -- nvim-treesitter
     {
