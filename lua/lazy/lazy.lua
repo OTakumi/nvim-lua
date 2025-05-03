@@ -4,7 +4,7 @@ require("lazy").setup({
     {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
-        lazy = true,
+        lazy = false,
         opts = {
             panel = { enabled = false },
             suggestion = { enabled = false },
@@ -17,11 +17,9 @@ require("lazy").setup({
             { "zbirenbaum/copilot.lua" }, -- or zbirenbaum/copilot.lua
             { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
         },
-        lazy = true,
-        event = "CmdlineEnter",
         build = "make tiktoken", -- Only on MacOS or Linux
         opts = {
-            model = "claude-3.7-sonnet-thought",
+            model = "claude-3.7-sonnet",
         },
     },
 
