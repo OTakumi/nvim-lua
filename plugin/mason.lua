@@ -13,83 +13,17 @@ require("mason-lspconfig").setup({
         "clangd",
         "dockerls",
         "docker_compose_language_service",
-        "graphql",
         "gopls",
         "jqls",
         "lua_ls",
         "marksman",
-        -- "rust_analyzer",
         "pylsp",
         "sqls",
         "taplo",
         "ts_ls",
         "yamlls",
     },
-})
-
-require("mason-lspconfig").setup_handlers({
-    function(server)
-        require("lspconfig")[server].setup({
-            capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        })
-    end,
-    -- ["rust_analyzer"] = function() end,
-    ["clangd"] = function()
-        require("lspconfig").clangd.setup({
-            capabilities = require("cmp_nvim_lsp").default_capabilities(),
-            cmd = {
-                "clangd",
-                "--offset-encoding=utf-16",
-            },
-        })
-        -- require("clangd_extensions.inlay_hints").setup_autocmd()
-        -- require("clangd_extensions.inlay_hints").set_inlay_hints()
-    end,
-    ["pylsp"] = function()
-        require("lspconfig").pylsp.setup({
-            settings = {
-                pylsp = {
-                    plugins = {
-                        pycodestyle = {
-                            ignore = { "W391", "E713" },
-                            maxLineLength = 120,
-                        },
-                        pylint = {
-                            enabled = true,
-                            args = {
-                                "--disable=C0114,C0115,C0116,C0301",
-                            },
-                        },
-                        black = {
-                            lineLength = 120,
-                        },
-                        flake8 = {
-                            ignore = { "W391" },
-                            maxLineLength = 120,
-                        },
-                    },
-                },
-            },
-        })
-    end,
-    ["gopls"] = function()
-        require("lspconfig").gopls.setup({
-            analyzes = {
-                unusedparams = true,
-            },
-            staticcheck = true,
-            gofumpt = true,
-        })
-    end,
-    ["taplo"] = function()
-        require("lspconfig").taplo.setup({
-            settings = {
-                taplo = {
-                    checkOnSave = true,
-                },
-            },
-        })
-    end,
+    automatic_installation = true,
 })
 
 require("mason-nvim-dap").setup({
@@ -100,7 +34,7 @@ require("mason-nvim-dap").setup({
         "codelldb",
         "cpptools",
     },
-    handlers = {},
+    automatic_installation = true,
 })
 
 require("mason-null-ls").setup({
@@ -122,7 +56,7 @@ require("mason-null-ls").setup({
         "yamllint",
         "yamlfmt",
     },
-    handlers = {},
+    automatic_installation = true,
 })
 
 local null_ls = require("null-ls")
