@@ -4,8 +4,7 @@ cmp.setup({
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-            -- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+            require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
         end,
     },
     window = {
@@ -21,9 +20,8 @@ cmp.setup({
     }),
     sources = cmp.config.sources({
         { name = "nvim_lsp", group_index = 2 },
-        -- { name = "luasnip", group_index = 2 }, -- For luasnip users.
+        { name = "luasnip", group_index = 2 }, -- For luasnip users.
         { name = "copilot", group_index = 2 }, -- For copilot users.
-        { name = "vsnip", group_index = 2 }, -- For vsnip users.
         { name = "path" },
     }, {
         { name = "buffer" },
@@ -48,3 +46,4 @@ cmp.setup.cmdline(":", {
     }),
     matching = { disallow_symbol_nonprefix_matching = false },
 })
+
