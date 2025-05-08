@@ -98,11 +98,13 @@ require("lazy").setup({
     -- Simple plugins can be specified as strings
     { "rstacruz/vim-closer", lazy = true, event = "InsertEnter" },
 
-    -- LSP
     -- mason
-    { "williamboman/mason.nvim", lazy = true },
-    { "williamboman/mason-lspconfig.nvim", lazy = true, opt = {} },
-    { "neovim/nvim-lspconfig", lazy = true },
+    { "williamboman/mason.nvim" },
+
+    -- lsp
+    { "williamboman/mason-lspconfig.nvim" },
+    { "neovim/nvim-lspconfig" },
+
     {
         "jay-babu/mason-null-ls.nvim",
         lazy = true,
@@ -116,8 +118,6 @@ require("lazy").setup({
     { "hrsh7th/cmp-nvim-lsp", lazy = true },
     { "hrsh7th/cmp-buffer", lazy = true },
     { "hrsh7th/cmp-path", lazy = true },
-    { "hrsh7th/cmp-vsnip", lazy = true, event = "InsertEnter" },
-    { "hrsh7th/vim-vsnip", lazy = true, event = "InsertEnter" },
     {
         "zbirenbaum/copilot-cmp",
         lazy = true,
@@ -125,6 +125,16 @@ require("lazy").setup({
         opts = {},
     },
     { "hrsh7th/nvim-cmp", lazy = true, event = "InsertEnter" },
+    {
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        version = "v2.3", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp",
+        lazy = true,
+        event = "InsertEnter",
+    },
+    { "saadparwaiz1/cmp_luasnip", lazy = true, event = "InsertEnter" },
 
     -- nvim-treesitter
     {
