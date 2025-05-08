@@ -1,3 +1,43 @@
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+require("lspconfig").lua_ls.setup({
+    capabilities = capabilities,
+    settings = {
+        Lua = {
+            runtime = {
+                version = "LuaJIT",
+            },
+            diagnostics = {
+                globals = { "vim" },
+            },
+            workspace = {
+                library = vim.list_extend(vim.api.nvim_get_runtime_file("lua", true), {
+                    "${3rd}/luv/library",
+                    "${3rd}/busted/library",
+                    "${3rd}/luassert/library",
+                }),
+                checkThirdParty = false,
+            },
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
+})
+
+require("lspconfig").clangd.setup({
+    capabilities = capabilities,
+    settings = {
+        ["clangd"] = {
+            filetypes = { "c", "cpp", "objc", "objcpp" },
+            cmd = {
+                "clangd",
+                "--offset-encoding=utf-16",
+            },
+        },
+    },
+})
+
 require("mason").setup({
     ui = {
         icons = {
@@ -17,13 +57,13 @@ require("mason-lspconfig").setup({
         "jqls",
         "lua_ls",
         "marksman",
-        "pylsp",
         "sqls",
         "taplo",
         "ts_ls",
         "yamlls",
     },
     automatic_installation = true,
+    automatic_enable = true,
 })
 
 require("mason-nvim-dap").setup({
@@ -40,7 +80,6 @@ require("mason-nvim-dap").setup({
 require("mason-null-ls").setup({
     function() end,
     ensure_installed = {
-        -- "black",
         "biome",
         "cpplint",
         "clang-format",
@@ -50,7 +89,6 @@ require("mason-null-ls").setup({
         "hadolint",
         "markdownlint",
         "prettier",
-        -- "pylint",
         "stylua",
         "stylelint",
         "yamllint",
@@ -65,16 +103,10 @@ null_ls.setup({
         -- linters
         null_ls.builtins.diagnostics.hadolint,
         null_ls.builtins.diagnostics.yamllint,
-        -- null_ls.builtins.diagnostics.pylint.with({
-        --     diagnostics_postprocess = function(diagnostic)
-        --         diagnostic.code = diagnostic.message_id
-        --     end,
-        -- }),
         null_ls.builtins.diagnostics.hadolint,
 
         -- formatters
         null_ls.builtins.formatting.isort,
-        -- null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.biome,
         null_ls.builtins.formatting.clang_format,
         null_ls.builtins.formatting.gofmt,
