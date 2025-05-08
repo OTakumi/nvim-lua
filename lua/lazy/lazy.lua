@@ -135,7 +135,6 @@ require("lazy").setup({
         event = "InsertEnter",
     },
     { "saadparwaiz1/cmp_luasnip", lazy = true, event = "InsertEnter" },
-    { "hrsh7th/cmp-copilot", lazy = true, event = "InsertEnter" },
 
     -- nvim-treesitter
     {
