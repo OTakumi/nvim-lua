@@ -1,7 +1,7 @@
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
--- vim.lsp.enable("pylsp")
-vim.lsp.config("pylsp", {
+require("lspconfig").pylsp.setup({
+    capabilities = capabilities,
     settings = {
         pylsp = {
             plugins = {
@@ -26,52 +26,4 @@ vim.lsp.config("pylsp", {
         },
     },
 })
-require("lspconfig").pylsp.setup({
-    capabilities = capabilities,
-    -- other lspconfig configs
-})
 
--- vim.lsp.enable("lua_ls")
-vim.lsp.config("lua_ls", {
-    settings = {
-        Lua = {
-            runtime = {
-                version = "LuaJIT",
-            },
-            diagnostics = {
-                globals = { "vim" },
-            },
-            workspace = {
-                library = vim.list_extend(vim.api.nvim_get_runtime_file("lua", true), {
-                    "${3rd}/luv/library",
-                    "${3rd}/busted/library",
-                    "${3rd}/luassert/library",
-                }),
-                checkThirdParty = false,
-            },
-            telemetry = {
-                enable = false,
-            },
-        },
-    },
-})
-require("lspconfig").lua_ls.setup({
-    capabilities = capabilities,
-    -- other lspconfig configs
-})
-
-vim.lsp.config("clangd", {
-    settings = {
-        ["clangd"] = {
-            filetypes = { "c", "cpp", "objc", "objcpp" },
-            cmd = {
-                "clangd",
-                "--offset-encoding=utf-16",
-            },
-        },
-    },
-})
-require("lspconfig").clangd.setup({
-    capabilities = capabilities,
-    -- other lspconfig configs
-})
