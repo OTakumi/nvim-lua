@@ -21,7 +21,6 @@ require("conform").setup({
             args = {
                 "-l 119",
                 "--quiet",
-                "-",
             },
             stdin = true,
         },
@@ -30,7 +29,7 @@ require("conform").setup({
         lua = { "stylua" },
 
         -- Conform will run multiple formatters sequentially
-        python = { "isort", "black" },
+        python = { "black" },
 
         -- You can customize some of the format options for the filetype (:help conform.format)
         rust = { "rustfmt", lsp_format = "fallback" },
