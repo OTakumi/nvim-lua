@@ -99,7 +99,11 @@ require("lazy").setup({
     },
 
     -- formatters, linters
-    { "mhartington/formatter.nvim", event = "CmdlineEnter" },
+    -- { "mhartington/formatter.nvim", event = "CmdlineEnter" },
+    {
+        "stevearc/conform.nvim",
+        opts = {},
+    },
 
     -- file finder
     {
