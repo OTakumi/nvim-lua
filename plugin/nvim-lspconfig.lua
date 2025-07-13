@@ -27,3 +27,12 @@ require("lspconfig").pylsp.setup({
     },
 })
 
+local csharp_ls_path = vim.fn.expand("$HOME/.dotnet/tools/csharp-ls")
+require("lspconfig").csharp_ls.setup({
+    capabilities = capabilities,
+    settings = {
+        csharp_ld = {
+            cmd = { csharp_ls_path },
+        },
+    },
+})
