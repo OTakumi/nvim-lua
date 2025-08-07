@@ -75,7 +75,7 @@ lspconfig.csharp_ls.setup({
 
     settings = {
         csharp_ls = {
-            -- inlayhintを全体的に有効化
+            -- inlay hintを全体的に有効化
             inlayHints = {
                 enabled = true,
             },
