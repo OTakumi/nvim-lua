@@ -21,7 +21,6 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = "nvim_lsp", group_index = 2 },
         { name = "luasnip", group_index = 2 }, -- For luasnip users.
-        { name = "copilot", group_index = 2 }, -- For copilot users.
         { name = "path" },
     }, {
         { name = "buffer" },
@@ -46,4 +45,3 @@ cmp.setup.cmdline(":", {
     }),
     matching = { disallow_symbol_nonprefix_matching = false },
 })
-
