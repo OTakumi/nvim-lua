@@ -71,4 +71,14 @@ lspconfig.pylsp.setup({
 })
 
 lspconfig.csharp_ls.setup({
+    capabilities = capabilities,
+
+    settings = {
+        csharp_ls = {
+            -- inlay hintを全体的に有効化
+            inlayHints = {
+                enabled = true,
+            },
+        },
+    }
 })
