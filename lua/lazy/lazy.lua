@@ -33,12 +33,15 @@ require("lazy").setup({
     -- Simple plugins can be specified as strings
     { "rstacruz/vim-closer", lazy = true, event = "InsertEnter" },
 
-    -- mason
-    { "williamboman/mason.nvim" },
-
     -- lsp
-    { "williamboman/mason-lspconfig.nvim" },
-    { "neovim/nvim-lspconfig" },
+    {
+        "mason-org/mason-lspconfig.nvim",
+        opts = {},
+        dependencies = {
+            { "mason-org/mason.nvim", opts = {} },
+            "neovim/nvim-lspconfig",
+        },
+    },
 
     {
         "jay-babu/mason-null-ls.nvim",
@@ -98,10 +101,10 @@ require("lazy").setup({
         },
     },
 
-    -- formatters, linters
-    -- { "mhartington/formatter.nvim", event = "CmdlineEnter" },
     {
         "stevearc/conform.nvim",
+        event = { "BufWritePre" }, -- ファイル保存前にイベントを発火
+        cmd = { "ConformInfo" },
         opts = {},
     },
 
