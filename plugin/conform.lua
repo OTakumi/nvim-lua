@@ -41,5 +41,6 @@ require("conform").setup({
         javascriptreact = { "biome" },
         json = { "biome" },
         jsonc = { "biome" },
+        cs = { "csharpier" },
     },
 })
