@@ -176,6 +176,13 @@ require("lazy").setup({
   -- git diff
   { "sindrets/diffview.nvim", lazy = true, event = "VimEnter" },
 
+  -- autotag
+  {
+    "https://github.com/windwp/nvim-ts-autotag",
+    lazy = true,
+    evemt = "InsertEnter",
+  },
+
   {
     "kdheepak/lazygit.nvim",
     lazy = true,
