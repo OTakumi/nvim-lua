@@ -35,7 +35,6 @@ require("conform").setup({
         "--indent-width=2",
         "-",
       },
-      stdin = true,
     },
     black = {
       exe = "black",
@@ -44,7 +43,6 @@ require("conform").setup({
         "--quiet",
         "-",
       },
-      stdin = true,
     },
   },
 })
