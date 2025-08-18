@@ -4,7 +4,7 @@ require("conform").setup({
     lua = { "stylua" },
 
     -- python
-    python = { "black" },
+    python = { "ruff_organize_imports", "ruff_format", "black", "isort" },
 
     -- rust
     rust = { "rustfmt", lsp_format = "fallback" },
