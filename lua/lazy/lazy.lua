@@ -196,6 +196,12 @@ require("lazy").setup({
     end,
   },
 
+  -- todo comment
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+
   {
     "kdheepak/lazygit.nvim",
     lazy = true,
