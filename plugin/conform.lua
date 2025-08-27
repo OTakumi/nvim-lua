@@ -4,7 +4,7 @@ require("conform").setup({
     lua = { "stylua" },
 
     -- python
-    python = { "ruff_organize_imports", "ruff_format", "black", "isort" },
+    python = { "ruff_organize_imports", "ruff_format" },
 
     -- rust
     rust = { "rustfmt", lsp_format = "fallback" },
@@ -36,10 +36,12 @@ require("conform").setup({
         "-",
       },
     },
-    black = {
-      exe = "black",
+    ruff_format = {
+      exe = "ruff",
       prepend_args = {
-        "-l 120",
+        "format",
+        "--line-length",
+        "120",
         "--quiet",
         "-",
       },
