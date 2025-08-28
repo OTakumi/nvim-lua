@@ -18,5 +18,4 @@ lint.linters_by_ft = {
 lint.linters.ruff.args = {
   "--select=F,E",
   "--ignore=E501",
-  "--line-length=120",
 }
