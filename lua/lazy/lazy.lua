@@ -42,13 +42,6 @@ require("lazy").setup({
     },
   },
 
-  {
-    "jay-babu/mason-null-ls.nvim",
-    lazy = true,
-    -- event = { "BufReadPre", "BufNewFile" },
-  },
-  { "nvimtools/none-ls.nvim", lazy = true },
-
   -- cmp plugins
   { "hrsh7th/cmp-cmdline", event = "CmdlineEnter" },
   { "hrsh7th/cmp-nvim-lua", lazy = true },
@@ -108,6 +101,13 @@ require("lazy").setup({
     event = { "BufWritePre" }, -- ファイル保存前にイベントを発火
     cmd = { "ConformInfo" },
     opts = {},
+  },
+
+  -- linter
+  {
+    "mfussenegger/nvim-lint",
+    lazy = true,
+    event = { "BufReadPost", "BufNewFile" },
   },
 
   -- file finder
