@@ -102,3 +102,9 @@ lspconfig.csharp_ls.setup({
 -- html, css
 lspconfig.html.setup({ capabilities = capabilities })
 lspconfig.cssls.setup({ capabilities = capabilities })
+
+-- yaml
+lspconfig.yamlls.setup({ capabilities = capabilities })
+
+-- lua
+lspconfig.lua_ls.setup({ capabilities = capabilities })

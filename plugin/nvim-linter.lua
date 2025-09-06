@@ -11,7 +11,7 @@ lint.linters_by_ft = {
   docker = { "hadolint" },
   markdown = { "vale" },
   sql = { "sqlfluff" },
-  yaml = { "yq" },
+  yaml = { "yamllint" },
 }
 
 -- ruff
