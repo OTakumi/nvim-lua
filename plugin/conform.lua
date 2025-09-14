@@ -20,6 +20,9 @@ require("conform").setup({
 
     -- go
     go = { "goimports", "gofumpt" },
+
+    -- markdown
+    markdown = { "markdownlint" },
   },
   format_on_save = {
     -- These options will be passed to conform.format()

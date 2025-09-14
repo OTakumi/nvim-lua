@@ -9,7 +9,7 @@ lint.linters_by_ft = {
   lua = { "luacheck" },
   python = { "ruff" },
   docker = { "hadolint" },
-  markdown = { "vale" },
+  markdown = { "markdownlint" },
   sql = { "sqlfluff" },
   yaml = { "yamllint" },
 }
