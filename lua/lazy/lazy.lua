@@ -33,13 +33,10 @@ require("lazy").setup({
   -- Simple plugins can be specified as strings
   { "rstacruz/vim-closer", lazy = true, event = "InsertEnter" },
 
-  -- lsp
+  -- mason
   {
-    "mason-org/mason-lspconfig.nvim",
-    dependencies = {
-      { "mason-org/mason.nvim", opts = {} },
-      "neovim/nvim-lspconfig",
-    },
+    "mason-org/mason.nvim",
+    opts = {},
   },
 
   -- cmp plugins
