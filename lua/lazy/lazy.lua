@@ -29,6 +29,11 @@ require("lazy").setup({
     lazy = true,
     event = "InsertEnter",
   },
+  {
+    "lewis6991/gitsigns.nvim",
+    lazy = true,
+    event = "BufReadPost",
+  },
 
   -- Simple plugins can be specified as strings
   { "rstacruz/vim-closer", lazy = true, event = "InsertEnter" },
