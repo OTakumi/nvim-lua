@@ -27,7 +27,7 @@ require("lazy").setup({
   {
     "tpope/vim-fugitive",
     lazy = true,
-    event = "InsertEnter",
+    event = "BufReadPost",
   },
   {
     "lewis6991/gitsigns.nvim",
