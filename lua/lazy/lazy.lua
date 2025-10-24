@@ -19,7 +19,7 @@ require("lazy").setup({
     },
     build = "make tiktoken", -- Only on MacOS or Linux
     opts = {
-      model = "claude-3.7-sonnet",
+      model = "gpt-4.1",
     },
   },
 
@@ -163,10 +163,11 @@ require("lazy").setup({
       "nvim-tree/nvim-web-devicons",
     },
     opts = {
-      theme = "material",
-      icons_enabled = true,
+      options = {
+        theme = "iceberg_dark",
+        icons_enabled = true,
+      },
     },
-    lazy = true,
     event = "VimEnter",
   },
 
