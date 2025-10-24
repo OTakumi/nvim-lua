@@ -25,6 +25,10 @@ vim.lsp.enable({
   -- c#
   "csharp_ls",
 
+  -- c++
+  "clangd",
+  "neocmakelsp",
+
   -- dockerfile
   "docker-language-server",
 })
