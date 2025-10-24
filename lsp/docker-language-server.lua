@@ -1,5 +1,5 @@
 return {
-  cmd = { "docker-language-server", "start", "--stdio" },
+  cmd = { "docker-language-server", "--stdio" },
   filetypes = { "dockerfile", "yaml.docker-compose" },
   root_markers = {
     "Dockerfile",
