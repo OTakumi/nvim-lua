@@ -173,20 +173,6 @@ require("lazy").setup({
     lazy = true,
   },
 
-  -- tree
-  {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("nvim-tree").setup({})
-    end,
-    opts = {},
-  },
-
   -- comments
   {
     "numToStr/Comment.nvim",
