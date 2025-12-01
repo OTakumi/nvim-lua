@@ -38,6 +38,25 @@ require("lazy").setup({
   -- Simple plugins can be specified as strings
   { "rstacruz/vim-closer", lazy = true, event = "InsertEnter" },
 
+  -- dashboard
+  {
+    "nvimdev/dashboard-nvim",
+    event = "VimEnter",
+    config = function()
+      require("dashboard").setup({
+        -- config
+        config = {
+          week_header = {
+            enable = true, --boolean use a week header
+            -- concat = true, --concat string after time string line
+            -- append = true, --table append after time string line
+          },
+        },
+      })
+    end,
+    dependencies = { { "nvim-tree/nvim-web-devicons" } },
+  },
+
   -- mason
   {
     "mason-org/mason.nvim",
