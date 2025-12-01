@@ -42,18 +42,16 @@ require("lazy").setup({
   {
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
-    config = function()
-      require("dashboard").setup({
-        -- config
-        config = {
-          week_header = {
-            enable = true, --boolean use a week header
-            -- concat = true, --concat string after time string line
-            -- append = true, --table append after time string line
-          },
+    opts = {
+      -- config
+      config = {
+        week_header = {
+          enable = true, --boolean use a week header
+          -- concat = true, --concat string after time string line
+          -- append = true, --table append after time string line
         },
-      })
-    end,
+      },
+    },
     dependencies = { { "nvim-tree/nvim-web-devicons" } },
   },
 
@@ -111,6 +109,30 @@ require("lazy").setup({
     "nvimdev/lspsaga.nvim", -- LSP UIs
     dependencies = {
       "nvim-tree/nvim-web-devicons",
+    },
+  },
+
+  -- snack
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      bigfile = { enabled = true },
+      explorer = { enabled = true },
+      indent = { enabled = true },
+      input = { enabled = true },
+      picker = { enabled = true },
+      notifier = { enabled = true },
+      quickfile = { enabled = true },
+      scope = { enabled = true },
+      scroll = { enabled = true },
+      statuscolumn = { enabled = true },
+      words = { enabled = true },
     },
   },
 
