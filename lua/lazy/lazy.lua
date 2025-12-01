@@ -219,16 +219,6 @@ require("lazy").setup({
     ft = { "c", "cpp" },
   },
 
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    ---@module "ibl"
-    ---@type ibl.config
-    lazy = true,
-    event = "VimEnter",
-    opts = {},
-  },
-
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
   -- git diff
