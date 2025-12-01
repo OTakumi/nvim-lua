@@ -35,6 +35,22 @@ require("lazy").setup({
         tool = "🔧 Tool",
       },
     },
+    config = function(_, opts)
+      -- まずCopilotChatのセットアップを実行
+      local chat = require("CopilotChat")
+      chat.setup(opts)
+
+      -- ここからが自動実行の設定です
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "gitcommit", -- ファイルタイプが gitcommit の時だけ発動
+        callback = function()
+          -- タイミングの問題を防ぐため、少しだけ遅延実行させるのがコツです
+          vim.schedule(function()
+            vim.cmd("CopilotChatCommit")
+          end)
+        end,
+      })
+    end,
   },
 
   -- Git
