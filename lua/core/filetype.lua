@@ -59,6 +59,10 @@ M.tf = function()
   set_indent(2, false)
 end
 
+M.make = function()
+  set_indent(4, true)
+end
+
 return setmetatable(M, {
   __index = function()
     return function()
