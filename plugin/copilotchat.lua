@@ -15,7 +15,7 @@ require("CopilotChat").setup({
   },
   prompts = {
     Commit = {
-      prompt = "Write commit message for the change with commitizen convention in Japanese. Keep the title under 50 characters and wrap message at 72 characters. Format as a gitcommit code block. ",
+      prompt = "Write commit message for the change with commitizen convention in Japanese. The title must be between 50 and 70 characters. The body should be a bulleted list with a maximum of 3 items, and each line must be under 100 characters. Format as a gitcommit code block.",
       context = "git:staged",
     },
   },
