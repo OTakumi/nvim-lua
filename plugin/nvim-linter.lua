@@ -12,6 +12,7 @@ lint.linters_by_ft = {
   markdown = { "markdownlint" },
   sql = { "sqlfluff" },
   yaml = { "yamllint" },
+  vue = { "biomejs" },
 }
 
 -- ruff

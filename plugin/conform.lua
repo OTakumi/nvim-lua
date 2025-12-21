@@ -16,6 +16,9 @@ require("conform").setup({
     javascriptreact = { "biome" },
     json = { "biome" },
     jsonc = { "biome" },
+    vue = { "biome" },
+
+    -- csharp
     cs = { "csharpier" },
 
     -- go

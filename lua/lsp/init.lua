@@ -1,3 +1,6 @@
+-- This file configures and enables various Language Server Protocol (LSP) clients for Neovim.
+
+-- Configure global LSP client capabilities and settings for all language servers.
 vim.lsp.config("*", {
   capabilities = {
     textDocument = {
@@ -10,7 +13,7 @@ vim.lsp.config("*", {
   root_markers = { ".git" },
 })
 
--- load
+-- Enable specific language servers.
 vim.lsp.enable({
   -- lua
   "lua_ls",
@@ -31,4 +34,7 @@ vim.lsp.enable({
 
   -- dockerfile
   "docker-language-server",
+
+  -- vue
+  "vue_ls",
 })
