@@ -1,23 +1,22 @@
 return {
   {
     "stevearc/conform.nvim",
-    -- `format_on_save`機能を使うため、ファイルの保存前に読み込まれるように設定します。
+    -- `format_on_save`機能を使うため、ファイルの保存前に読み込まれるように設定
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
-    -- フォーマッターをmason.nvimで管理しているため、依存関係を明記します。
     dependencies = { "williamboman/mason.nvim" },
     opts = {
-      -- ファイル保存時にフォーマットを実行します
+      -- ファイル保存時にフォーマットを実行
       format_on_save = {
         timeout_ms = 500,
-        -- 設定されたフォーマッターが無い場合、LSPをフォールバックとして使用します
-        lsp_format = "fallback",
+        -- 設定されたフォーマッターが無い場合、LSPをフォールバックとして使用
+        lsp_fallback = true,
       },
       -- ファイルタイプ毎のフォーマッター設定
       formatters_by_ft = {
         lua = { "stylua" },
         python = { "ruff_organize_imports", "ruff_format" },
-        rust = { "rustfmt", lsp_format = "fallback" },
+        rust = { "rustfmt" },
         typescript = { "biome" },
         typescriptreact = { "biome" },
         javascript = { "biome" },
