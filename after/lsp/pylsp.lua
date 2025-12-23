@@ -1,0 +1,15 @@
+---@type vim.lsp.config
+
+-- Python pylsp
+return {
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = { "W391" },
+          maxLineLength = 120,
+        },
+      },
+    },
+  },
+}
