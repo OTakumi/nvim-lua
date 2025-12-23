@@ -1,7 +1,6 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    -- 遅延ロードを無効化
     lazy = false,
     -- インストール・更新時にパーサーを自動更新します
     build = ":TSUpdate",
@@ -18,11 +17,12 @@ return {
         "css",
         "javascript",
         "typescript",
-        "tsx",
+        "javascriptreact",
+        "typescriptreact",
+        "vue",
         "json",
         "markdown",
         "markdown_inline",
-        "vue",
       },
       -- インデント機能を有効化
       indent = { enable = true },
