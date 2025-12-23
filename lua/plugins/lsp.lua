@@ -4,16 +4,20 @@ return {
     opts = {
       ensure_installed = {
         "lua_ls",
-        "rust_analyzer",
         "clangd",
         "cmake",
         "csharp_ls",
         "gopls",
         "vue_ls",
         "vtsls",
+        "biome",
         "pylsp",
         "ruff",
+        "ruff-lsp",
+        "rust_analyzer",
         "dockerls",
+        "cssls",
+        "yamlls",
       },
     },
     dependencies = {
