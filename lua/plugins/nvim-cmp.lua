@@ -1,11 +1,8 @@
 return {
   {
     "hrsh7th/nvim-cmp",
-    -- 挿入モードに入ったタイミングで読み込みを開始します
     event = "InsertEnter",
-    -- `nvim-cmp`が依存するプラグイン群
     dependencies = {
-      -- スニペットエンジン
       {
         "L3MON4D3/LuaSnip",
         version = "v2.*", -- v2.x系の最新版を追跡
@@ -48,7 +45,6 @@ return {
           { name = "path" },
         }, {
           { name = "buffer" },
-          { name = "cmdline" },
         }),
       })
 
