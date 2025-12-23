@@ -9,8 +9,6 @@ return {
       -- ファイル保存時にフォーマットを実行
       format_on_save = {
         timeout_ms = 500,
-        -- 設定されたフォーマッターが無い場合、LSPをフォールバックとして使用
-        lsp_fallback = true,
       },
       -- ファイルタイプ毎のフォーマッター設定
       formatters_by_ft = {
@@ -27,6 +25,9 @@ return {
         cs = { "csharpier" },
         go = { "goimports", "gofumpt" },
         markdown = { "markdownlint" },
+      },
+      default_format_opts = {
+        lsp_format = "fallback",
       },
       -- 各フォーマッターの詳細設定
       formatters = {
