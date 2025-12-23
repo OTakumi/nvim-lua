@@ -22,7 +22,7 @@ return {
         markdown = true,
         ["."] = false,
       },
-      copilot_model = "claude-3.7-sonnet",
     },
   },
 }
+
