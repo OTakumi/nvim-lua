@@ -20,8 +20,6 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 --- keymaps ---
-vim.g.mapleader = ","
-
 -- Common keymaps
 local opts = { noremap = true, silent = true }
 vim.keymap.set("", "<up>", "<nop>", opts)
