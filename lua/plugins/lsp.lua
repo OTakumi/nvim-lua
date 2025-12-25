@@ -1,37 +1,11 @@
 return {
   {
     "mason-org/mason-lspconfig.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "mason-org/mason.nvim",
       "neovim/nvim-lspconfig",
-      {
-        "hrsh7th/cmp-nvim-lsp",
-        event = { "BufReadPre", "BufNewFile" },
-        keys = {
-          { "K", vim.lsp.buf.hover, desc = "LSP: Hover" },
-          { "gf", vim.lsp.buf.format, desc = "LSP: Format" },
-          { "gr", vim.lsp.buf.references, desc = "LSP: References" },
-          { "gd", vim.lsp.buf.definition, desc = "LSP: Definition" },
-          { "gD", vim.lsp.buf.declaration, desc = "LSP: Declaration" },
-          { "gi", vim.lsp.buf.implementation, desc = "LSP: Implementation" },
-          { "gt", vim.lsp.buf.type_definition, desc = "LSP: Type Definition" },
-          { "gn", vim.lsp.buf.rename, desc = "LSP: Rename" },
-          { "ga", vim.lsp.buf.code_action, desc = "LSP: Code Action" },
-          { "ge", vim.diagnostic.open_float, desc = "LSP: Show Diagnostics" },
-          { "g]", vim.diagnostic.goto_next, desc = "LSP: Next Diagnostic" },
-          { "g[", vim.diagnostic.goto_prev, desc = "LSP: Prev Diagnostic" },
-          { "<C-k>", vim.lsp.buf.signature_help, desc = "LSP: Signature Help" },
-          { "<space>wa", vim.lsp.buf.add_workspace_folder, desc = "LSP: Add Workspace Folder" },
-          { "<space>wr", vim.lsp.buf.remove_workspace_folder, desc = "LSP: Remove Workspace Folder" },
-          {
-            "<space>wl",
-            function()
-              print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-            end,
-            desc = "LSP: List Workspace Folders",
-          },
-        },
-      },
+      "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
       require("mason").setup({
@@ -60,6 +34,32 @@ return {
           "cssls",
           "yamlls",
         },
+      })
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+        callback = function()
+          local nmap = function(keys, func, desc)
+            vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc, silent = true })
+          end
+          nmap("K", vim.lsp.buf.hover, "LSP: Hover")
+          nmap("gf", vim.lsp.buf.format, "LSP: Format")
+          nmap("gr", vim.lsp.buf.references, "LSP: References")
+          nmap("gd", vim.lsp.buf.definition, "LSP: Definition")
+          nmap("gD", vim.lsp.buf.declaration, "LSP: Declaration")
+          nmap("gi", vim.lsp.buf.implementation, "LSP: Implementation")
+          nmap("gt", vim.lsp.buf.type_definition, "LSP: Type Definition")
+          nmap("gn", vim.lsp.buf.rename, "LSP: Rename")
+          nmap("ga", vim.lsp.buf.code_action, "LSP: Code Action")
+          nmap("ge", vim.diagnostic.open_float, "LSP: Show Diagnostics")
+          nmap("g]", vim.diagnostic.goto_next, "LSP: Next Diagnostic")
+          nmap("g[", vim.diagnostic.goto_prev, "LSP: Prev Diagnostic")
+          nmap("<C-k>", vim.lsp.buf.signature_help, "LSP: Signature Help")
+          nmap("<space>wa", vim.lsp.buf.add_workspace_folder, "LSP: Add Workspace Folder")
+          nmap("<space>wr", vim.lsp.buf.remove_workspace_folder, "LSP: Remove Workspace Folder")
+          nmap("<space>wl", function()
+            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+          end, "LSP: List Workspace Folders")
+        end,
       })
     end,
   },
