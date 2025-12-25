@@ -41,9 +41,18 @@ return {
         additional_vim_regex_highlighting = false,
       },
     },
-    config = function(_, opts)
-      require("nvim-treesitter").setup(opts)
-    end,
+    keys = {
+      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+      { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+      { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
+      -- file_browser
+      {
+        "<space>fb",
+        ":Telescope file_browser path=%:p:h select_buffer=true theme=dropdown<CR>",
+        desc = "File Browser",
+      },
+    },
   },
   -- 現在のコードブロックのコンテキストを表示するプラグイン
   {

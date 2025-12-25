@@ -20,7 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 -- This is also a good place to setup other settings (vim.opt)
 -- You can check the currently configured leader with the following command:
 -- :lua print(vim.inspect(vim.g.mapleader))
-vim.g.mapleader = ","
+vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
