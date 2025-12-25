@@ -1,13 +1,12 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
-    cmd = "Telescope",
+    lazy = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-ghq.nvim",
       "nvim-telescope/telescope-z.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      "nvim-telescope/telescope-file-browser.nvim",
     },
     opts = {
       pickers = {
@@ -21,7 +20,6 @@ return {
       telescope.load_extension("fzf")
       telescope.load_extension("ghq")
       telescope.load_extension("z")
-      telescope.load_extension("file_browser")
 
       -- keymaps
       local builtin = require("telescope.builtin")
@@ -31,12 +29,6 @@ return {
       vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope: Help Tags" })
       vim.keymap.set("n", "<leader>fz", "<cmd>Telescope z<cr>", { desc = "Telescope: Z" })
       vim.keymap.set("n", "<leader>fq", "<cmd>Telescope ghq<cr>", { desc = "Telescope: GHQ" })
-      vim.keymap.set(
-        "n",
-        "<space>fb",
-        ":Telescope file_browser path=%:p:h select_buffer=true theme=dropdown<CR>",
-        { desc = "Telescope: File Browser" }
-      )
     end,
   },
 }
