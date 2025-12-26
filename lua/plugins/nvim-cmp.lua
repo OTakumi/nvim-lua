@@ -1,16 +1,16 @@
 return {
-  -- Completion sources
-  { "hrsh7th/cmp-nvim-lsp", lazy = true },
-  { "hrsh7th/cmp-buffer", lazy = true },
-  { "hrsh7th/cmp-path", lazy = true },
-  { "hrsh7th/cmp-cmdline", lazy = true },
-  { "hrsh7th/cmp-nvim-lua", lazy = true },
-  { "saadparwaiz1/cmp_luasnip", lazy = true },
-
   -- Main completion engine
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lua",
+      "saadparwaiz1/cmp_luasnip",
+    },
     opts = function()
       local cmp = require("cmp")
       return {
