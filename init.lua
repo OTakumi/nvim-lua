@@ -9,17 +9,6 @@ require("core/options")
 require("core/colorscheme")
 require("core/lsp-keymaps")
 
-local filetype_conf = require("core/filetype")
-
-vim.api.nvim_create_augroup("vimrc_augroup", {})
-vim.api.nvim_create_autocmd("FileType", {
-  group = "vimrc_augroup",
-  pattern = "*",
-  callback = function(args)
-    filetype_conf[args.match]()
-  end,
-})
-
 --- keymaps ---
 -- Common keymaps
 local opts = { noremap = true, silent = true }
