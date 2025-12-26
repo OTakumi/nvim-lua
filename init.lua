@@ -7,6 +7,7 @@ vim.g.loaded_netrwPlugin = 1
 require("config.lazy")
 require("core/options")
 require("core/colorscheme")
+require("core/lsp-keymaps")
 
 local filetype_conf = require("core/filetype")
 
