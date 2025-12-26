@@ -1,40 +1,37 @@
 return {
+  { "hrsh7th/cmp-nvim-lsp", opts = {} },
+  {
+    "mason-org/mason.nvim",
+    opts = {
+      ui = {
+        icons = {
+          package_installed = "✓",
+          package_pending = "➜",
+          package_uninstalled = "✗",
+        },
+      },
+    },
+  },
   {
     "mason-org/mason-lspconfig.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "mason-org/mason.nvim",
-      "neovim/nvim-lspconfig",
-      "hrsh7th/cmp-nvim-lsp",
-    },
-    config = function()
-      require("mason").setup({
-        ui = {
-          icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗",
-          },
-        },
-      })
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "lua_ls",
-          "clangd",
-          "cmake",
-          "csharp_ls",
-          "gopls",
-          "vue_ls",
-          "vtsls",
-          "biome",
-          "pylsp",
-          "ruff",
-          "rust_analyzer",
-          "dockerls",
-          "cssls",
-          "yamlls",
-        },
-      })
+    opts = {
+      ensure_installed = {
+        "lua_ls",
+        "clangd",
+        "cmake",
+        "csharp_ls",
+        "gopls",
+        "vue_ls",
+        "vtsls",
+        "biome",
+        "pylsp",
+        "ruff",
+        "rust_analyzer",
+        "dockerls",
+        "cssls",
+        "yamlls",
+      },
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(ev)
@@ -60,7 +57,7 @@ return {
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
           end, "LSP: List Workspace Folders")
         end,
-      })
-    end,
+      }),
+    },
   },
 }
