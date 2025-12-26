@@ -53,7 +53,7 @@ return {
           nmap("ge", vim.diagnostic.open_float, "LSP: Show Diagnostics")
           nmap("g]", vim.diagnostic.goto_next, "LSP: Next Diagnostic")
           nmap("g[", vim.diagnostic.goto_prev, "LSP: Prev Diagnostic")
-          nmap("<C-k>", vim.lsp.buf.signature_help, "LSP: Signature Help")
+          nmap("<leader>k", vim.lsp.buf.signature_help, "LSP: Signature Help")
           nmap("<space>wa", vim.lsp.buf.add_workspace_folder, "LSP: Add Workspace Folder")
           nmap("<space>wr", vim.lsp.buf.remove_workspace_folder, "LSP: Remove Workspace Folder")
           nmap("<space>wl", function()
