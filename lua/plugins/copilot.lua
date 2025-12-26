@@ -1,9 +1,7 @@
 return {
   {
     "zbirenbaum/copilot.lua",
-    -- "Copilot"コマンドが実行されるまでプラグインの読み込みを遅延させます
     cmd = "Copilot",
-    -- 挿入モードに入ったタイミングで読み込む設定も一般的です
     event = "InsertEnter",
     opts = {
       panel = {
@@ -25,4 +23,3 @@ return {
     },
   },
 }
-

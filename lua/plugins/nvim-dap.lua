@@ -12,10 +12,9 @@ return {
       "DapUIToggle",
     },
     dependencies = {
-      -- デバッグUI
       {
         "rcarriga/nvim-dap-ui",
-        dependencies = { "nvim-neotest/nvim-nio" }, -- UIが依存するライブラリ
+        dependencies = { "nvim-neotest/nvim-nio" },
         config = function()
           local dapui = require("dapui")
           dapui.setup({
@@ -41,16 +40,16 @@ return {
           })
         end,
       },
-      -- ブレークポイント等の仮想テキスト表示
+      -- Virtual text display for breakpoints and variables
       {
         "theHamsta/nvim-dap-virtual-text",
-        opts = {}, -- デフォルト設定で有効化
+        opts = {}, -- Enable with default settings
       },
-      -- Mason経由でデバッガーを管理
+      -- Manage debuggers via Mason
       {
         "jay-babu/mason-nvim-dap.nvim",
         dependencies = { "mfussenegger/nvim-dap" },
-        -- ここでインストールしたいデバッガーを指定します
+        -- Specify debuggers to install here
         opts = {
           -- ensure_installed = { "coreclr", "go" },
         },
@@ -59,7 +58,7 @@ return {
     config = function()
       local dap, dapui = require("dap"), require("dapui")
 
-      -- nvim-dap-uiとの連携設定
+      -- Integration settings with nvim-dap-ui
       dap.listeners.before.attach.dapui_config = function()
         dapui.open()
       end
@@ -73,7 +72,7 @@ return {
         dapui.close()
       end
 
-      -- キーマップ設定
+      -- Keymap settings
       vim.keymap.set("n", "<F5>", function()
         require("dap").continue()
       end, { desc = "DAP: Continue" })
@@ -104,4 +103,3 @@ return {
     end,
   },
 }
-

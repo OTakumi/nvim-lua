@@ -1,16 +1,16 @@
 return {
   {
     "stevearc/conform.nvim",
-    -- `format_on_save`機能を使うため、ファイルの保存前に読み込まれるように設定
-    event = { "BufWritePre" },
-    cmd = { "ConformInfo" },
+    -- Load before file save to use format_on_save feature
+    event = "BufWritePre",
+    cmd = "ConformInfo",
     dependencies = { "williamboman/mason.nvim" },
     opts = {
-      -- ファイル保存時にフォーマットを実行
+      -- Execute formatting on file save
       format_on_save = {
         timeout_ms = 500,
       },
-      -- ファイルタイプ毎のフォーマッター設定
+      -- Formatter configuration per filetype
       formatters_by_ft = {
         lua = { "stylua" },
         python = { "ruff_organize_imports", "ruff_format" },
@@ -29,7 +29,7 @@ return {
       default_format_opts = {
         lsp_format = "fallback",
       },
-      -- 各フォーマッターの詳細設定
+      -- Detailed configuration for each formatter
       formatters = {
         stylua = {
           prepend_args = { "--indent-type=spaces", "--indent-width=2", "-" },

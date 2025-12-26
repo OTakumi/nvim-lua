@@ -2,7 +2,7 @@ return {
   {
     "https://github.com/windwp/nvim-ts-autotag",
     lazy = true,
-    event = "InsertEnter", -- 'evemt' のタイポを修正
+    event = "InsertEnter",
     ft = {
       "html",
       "javascriptreact",

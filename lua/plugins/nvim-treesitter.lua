@@ -1,11 +1,11 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    lazy = false,
-    -- インストール・更新時にパーサーを自動更新します
+    -- Automatically update parsers on installation or update
     build = ":TSUpdate",
+    event = "VimEnter",
     opts = {
-      -- インストールするパーサーのリスト
+      -- List of parsers to install
       ensure_installed = {
         "lua",
         "rust",
@@ -24,32 +24,28 @@ return {
         "markdown",
         "markdown_inline",
       },
-      -- インデント機能を有効化
+      -- Enable indent functionality
       indent = { enable = true },
-      -- ハイライト機能を有効化
+      -- Enable highlight functionality
       highlight = {
         enable = true,
-        -- ファイルサイズが大きい場合はハイライトを無効化
+        -- Disable highlighting for large files
         disable = function(lang, buf)
           local max_filesize = 300 * 1024 -- 300 KB
-          local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+          local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
           if ok and stats and stats.size > max_filesize then
             return true
           end
         end,
-        -- 追加のVim正規表現ハイライトは無効
+        -- Disable additional Vim regex highlighting
         additional_vim_regex_highlighting = false,
       },
     },
-    config = function(_, opts)
-      require("nvim-treesitter").setup(opts)
-    end,
   },
-  -- 現在のコードブロックのコンテキストを表示するプラグイン
+
+  -- Plugin to display the context of the current code block
   {
     "nvim-treesitter/nvim-treesitter-context",
-    -- nvim-treesitterの後にロードされるように依存関係を明記
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    opts = {}, -- デフォルト設定で有効化
+    opts = {},
   },
 }
