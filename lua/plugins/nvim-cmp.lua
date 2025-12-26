@@ -1,27 +1,19 @@
 return {
+  -- Completion sources
+  { "hrsh7th/cmp-nvim-lsp", lazy = true },
+  { "hrsh7th/cmp-buffer", lazy = true },
+  { "hrsh7th/cmp-path", lazy = true },
+  { "hrsh7th/cmp-cmdline", lazy = true },
+  { "hrsh7th/cmp-nvim-lua", lazy = true },
+  { "saadparwaiz1/cmp_luasnip", lazy = true },
+
+  -- Main completion engine
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
-    dependencies = {
-      {
-        "L3MON4D3/LuaSnip",
-        version = "v2.*", -- v2.x系の最新版を追跡
-        build = "make install_jsregexp",
-      },
-      "saadparwaiz1/cmp_luasnip",
-
-      -- 補完ソース
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-nvim-lua",
-    },
-    config = function()
+    opts = function()
       local cmp = require("cmp")
-
-      -- nvim-cmpのセットアップ
-      cmp.setup({
+      return {
         snippet = {
           expand = function(args)
             require("luasnip").lsp_expand(args.body)
@@ -37,7 +29,6 @@ return {
           ["<C-e>"] = cmp.mapping.abort(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
         }),
-        -- 導入した補完ソースを有効化
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "luasnip" },
@@ -46,9 +37,13 @@ return {
         }, {
           { name = "buffer" },
         }),
-      })
+      }
+    end,
+    config = function(_, opts)
+      local cmp = require("cmp")
+      cmp.setup(opts)
 
-      -- コマンドライン補完の設定
+      -- Command-line completion for search
       cmp.setup.cmdline({ "/", "?" }, {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
@@ -56,6 +51,7 @@ return {
         },
       })
 
+      -- Command-line completion for commands
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
