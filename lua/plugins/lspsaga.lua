@@ -1,10 +1,10 @@
 return {
   {
     "nvimdev/lspsaga.nvim",
-    -- LSPがバッファにアタッチされたタイミングで読み込むようにします
+    -- Load when LSP attaches to buffer
     event = "LspAttach",
     dependencies = {
-      "nvim-tree/nvim-web-devicons", -- アイコン表示に必要
+      "nvim-mini/mini.icons",
     },
     opts = {
       -- 元の設定から不要なネストを削除
@@ -22,3 +22,4 @@ return {
     },
   },
 }
+
