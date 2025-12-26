@@ -7,7 +7,6 @@ return {
       "nvim-mini/mini.icons",
     },
     opts = {
-      -- 元の設定から不要なネストを削除
       border_style = "single",
       symbol_in_winbar = {
         enable = true,
@@ -22,4 +21,3 @@ return {
     },
   },
 }
-

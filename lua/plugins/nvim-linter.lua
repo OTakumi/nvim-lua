@@ -1,12 +1,11 @@
 return {
   {
     "mfussenegger/nvim-lint",
-    -- ファイルの読み書きや挿入モード終了時に読み込まれるようにします
     event = { "BufWritePost", "BufReadPost", "InsertLeave" },
     config = function()
       local lint = require("lint")
 
-      -- ファイルタイプ毎のリンター設定
+      -- Linter configuration per filetype
       lint.linters_by_ft = {
         javascript = { "biomejs" },
         typescript = { "biomejs" },
@@ -22,13 +21,13 @@ return {
         vue = { "biomejs" },
       }
 
-      -- 特定のリンターへの引数設定
+      -- Arguments configuration for specific linters
       lint.linters.ruff.args = {
         "--select=F,E",
         "--ignore=E501",
       }
 
-      -- lintを実行するための自動コマンド
+      -- Autocmd to execute lint
       vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
         group = vim.api.nvim_create_augroup("nvim-lint-autogroup", { clear = true }),
         callback = function()
@@ -36,7 +35,7 @@ return {
         end,
       })
 
-      -- ユーザーコマンドの作成
+      -- Create user commands
       vim.api.nvim_create_user_command("Lint", function()
         lint.try_lint()
       end, { desc = "Trigger nvim-lint" })
@@ -58,3 +57,4 @@ return {
     end,
   },
 }
+
