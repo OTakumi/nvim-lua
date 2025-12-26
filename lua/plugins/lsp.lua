@@ -37,9 +37,9 @@ return {
       })
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-        callback = function()
+        callback = function(ev)
           local nmap = function(keys, func, desc)
-            vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc, silent = true })
+            vim.keymap.set("n", keys, func, { buffer = ev.buf, desc = desc, silent = true })
           end
           nmap("K", vim.lsp.buf.hover, "LSP: Hover")
           nmap("gf", vim.lsp.buf.format, "LSP: Format")
