@@ -3,7 +3,6 @@ return {
     "mrcjkb/rustaceanvim",
     version = "^6",
     ft = "rust",
-    event = "InsertEnter",
     opts = {
       tools = {
         enable_nextest = true,
