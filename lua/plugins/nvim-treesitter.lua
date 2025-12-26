@@ -1,9 +1,9 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    lazy = false,
     -- Automatically update parsers on installation or update
     build = ":TSUpdate",
+    event = "VimEnter",
     opts = {
       -- List of parsers to install
       ensure_installed = {
@@ -42,11 +42,10 @@ return {
       },
     },
   },
+
   -- Plugin to display the context of the current code block
   {
     "nvim-treesitter/nvim-treesitter-context",
-    -- Specify dependency to be loaded after nvim-treesitter
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {},
   },
 }
