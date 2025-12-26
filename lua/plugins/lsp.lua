@@ -54,9 +54,9 @@ return {
           nmap("g]", vim.diagnostic.goto_next, "LSP: Next Diagnostic")
           nmap("g[", vim.diagnostic.goto_prev, "LSP: Prev Diagnostic")
           nmap("<leader>k", vim.lsp.buf.signature_help, "LSP: Signature Help")
-          nmap("<space>wa", vim.lsp.buf.add_workspace_folder, "LSP: Add Workspace Folder")
-          nmap("<space>wr", vim.lsp.buf.remove_workspace_folder, "LSP: Remove Workspace Folder")
-          nmap("<space>wl", function()
+          nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "LSP: Add Workspace Folder")
+          nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "LSP: Remove Workspace Folder")
+          nmap("<leader>wl", function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
           end, "LSP: List Workspace Folders")
         end,
