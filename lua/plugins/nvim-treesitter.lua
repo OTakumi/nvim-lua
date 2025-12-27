@@ -19,6 +19,8 @@ return {
         "typescript",
         "javascriptreact",
         "typescriptreact",
+        "jsx",
+        "tsx",
         "vue",
         "json",
         "markdown",
