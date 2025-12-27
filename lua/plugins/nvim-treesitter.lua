@@ -7,6 +7,8 @@ return {
     opts = {
       -- List of parsers to install
       ensure_installed = {
+        "c",
+        "cpp",
         "lua",
         "rust",
         "python",
@@ -17,8 +19,6 @@ return {
         "css",
         "javascript",
         "typescript",
-        "javascriptreact",
-        "typescriptreact",
         "jsx",
         "tsx",
         "vue",
