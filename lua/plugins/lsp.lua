@@ -30,7 +30,6 @@ return {
         "biome",
         "pylsp",
         "ruff",
-        "rust_analyzer",
         "dockerls",
         "cssls",
         "yamlls",
