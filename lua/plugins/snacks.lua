@@ -15,6 +15,17 @@ return {
       scope = { enabled = true },
       scroll = { enabled = true },
       words = { enabled = true },
+      picker = {
+        sources = {
+          notifications = {
+            win = {
+              preview = {
+                wo = { wrap = true }
+              }
+            }
+          }
+        }
+      }
     },
   },
 }
