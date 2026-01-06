@@ -34,6 +34,9 @@ return {
         "yamlls",
       },
       automatic_install = true,
+      automatic_enable = {
+        exclude = { "rust_analyzer" }
+      },
     },
   },
 }
