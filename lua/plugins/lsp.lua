@@ -23,7 +23,6 @@ return {
         "lua_ls",
         "clangd",
         "cmake",
-        "csharp_ls",
         "gopls",
         "vue_ls",
         "vtsls",
