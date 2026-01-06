@@ -5,10 +5,10 @@ return {
     event = "InsertEnter",
     opts = {
       panel = {
-        enabled = false,
+        enabled = true,
       },
       suggestion = {
-        enabled = false,
+        enabled = true,
       },
       copilot_node_command = "node",
       filetypes = {
