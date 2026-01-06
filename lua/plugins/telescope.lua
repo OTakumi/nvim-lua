@@ -1,25 +1,37 @@
 return {
   {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make"
+  },
+  {
     "nvim-telescope/telescope.nvim",
     lazy = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-ghq.nvim",
       "nvim-telescope/telescope-z.nvim",
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      "nvim-telescope/telescope-fzf-native.nvim",
     },
     opts = {
       pickers = {
         themes = "get_dropdown",
+      },
+      extensions = {
+        fzf = {
+          fuzzy = true,
+          override_generic_sorter = true,
+          override_file_sorter = true,
+          case_mode = "smart_case",
+        },
       },
     },
     config = function(_, opts)
       local telescope = require("telescope")
       telescope.setup(opts)
 
-      telescope.load_extension("fzf")
       telescope.load_extension("ghq")
       telescope.load_extension("z")
+      telescope.load_extension("fzf")
 
       -- keymaps
       local builtin = require("telescope.builtin")
