@@ -20,12 +20,12 @@ return {
           notifications = {
             win = {
               preview = {
-                wo = { wrap = true }
-              }
-            }
-          }
-        }
-      }
+                wo = { wrap = true },
+              },
+            },
+          },
+        },
+      },
     },
   },
 }
