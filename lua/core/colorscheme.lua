@@ -4,7 +4,7 @@
 
 vim.cmd([[
 	try
-		colorscheme catppuccin-mocha
+		colorscheme terafox
 	catch /^Vim\%((\a\+)\)\=:E815/
 		colorscheme default
 		set background=dark
