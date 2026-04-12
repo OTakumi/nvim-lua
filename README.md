@@ -1,68 +1,39 @@
 # Neovim Configuration
 
-## Directory Structure
+Personal Neovim configuration using [lazy.nvim](https://github.com/folke/lazy.nvim).
 
-The main directory structure of this Neovim configuration:
+## Requirements
+
+- Neovim (latest stable recommended)
+- Git
+- A [Nerd Font](https://www.nerdfonts.com/) (for icons)
+- For Rust: `rustup component add rust-analyzer` (do **not** use Mason — see `lua/plugins/rust.lua`)
+
+## Directory Structure
 
 ```text
 .
-├── init.lua          # Main Neovim configuration file
+├── init.lua
 ├── after/
-│   ├── ftplugin/     # Filetype-specific indentation settings (highest priority)
-│   │   ├── python.lua
-│   │   ├── lua.lua
-│   │   ├── typescript.lua
-│   │   └── ...
-│   └── lsp/          # Custom configuration files for each LSP server
-│       ├── pylsp.lua
-│       ├── vtsls.lua
-│       └── vue_ls.lua
-└── lua/              # Main Lua modules
-    ├── config/       # lazy.nvim configuration
-    ├── core/         # Core settings (options, colorscheme, LSP keymaps)
-    │   ├── options.lua
-    │   ├── colorscheme.lua
-    │   └── lsp-keymaps.lua
-    ├── lsp/          # LSP-related (currently only init.lua)
-    │   └── init.lua
-    └── plugins/      # Plugin configurations (30+ plugins)
+│   ├── ftplugin/    # Filetype-specific indentation settings
+│   └── lsp/         # Per-server LSP configuration overrides
+└── lua/
+    ├── config/      # lazy.nvim bootstrap
+    ├── core/        # Options, colorscheme, LSP keymaps
+    ├── lsp/         # Global LSP capabilities and enabled servers
+    └── plugins/     # Plugin configurations — see lua/plugins/README.md
 ```
 
 ## LSP Configuration
 
-Steps to add a new LSP server:
+To add a new LSP server, add it to `ensure_installed` in `lua/plugins/lsp.lua`.
 
-1. Open the `lua/plugins/lsp.lua` file.
-2. Add the name of the LSP server you want to add to the `ensure_installed` list (use the name displayed in `mason`).
-
-    ```lua
-    opts = {
-      ensure_installed = {
-        "lua_ls",
-        "rust_analyzer",
-        "your_new_server", -- Add here
-      },
-      automatic_install = true,
-    },
-    ```
-
-    * This will automatically install and enable the server when Neovim starts.
-3. (Optional) To add custom settings for a server, create a configuration file in the `after/lsp/` directory.
-    * Create a file named `after/lsp/<server-name>.lua`, and the settings will be automatically loaded and merged with the defaults when the server starts.
-    * For example, to add custom settings for `pylsp`, create `after/lsp/pylsp.lua` and `return` the configuration as a Lua table.
-
-<https://github.com/neovim/nvim-lspconfig?tab=readme-ov-file>
-
-### Configuration Example: `after/lsp/pylsp.lua`
+For custom server settings, create `after/lsp/<server-name>.lua`:
 
 ```lua
 return {
   settings = {
-    pylsp = {
-      plugins = {
-        -- Your plugins here
-      },
-    },
+    your_server = { ... },
   },
 }
 ```

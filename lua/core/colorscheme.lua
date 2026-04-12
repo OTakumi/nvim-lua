@@ -4,7 +4,7 @@
 
 vim.cmd([[
 	try
-		colorscheme catppuccin-macchiato
+		colorscheme tokyonight
 	catch /^Vim\%((\a\+)\)\=:E815/
 		colorscheme default
 		set background=dark
