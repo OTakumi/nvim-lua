@@ -23,6 +23,8 @@ return {
         "tsx",
         "vue",
         "json",
+        "regex",
+        "bash",
         "markdown",
         "markdown_inline",
       },
