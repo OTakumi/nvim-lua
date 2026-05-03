@@ -12,6 +12,8 @@ return {
       },
       -- Formatter configuration per filetype
       formatters_by_ft = {
+        c = { "clang-format" },
+        cpp = { "clang-format" },
         lua = { "stylua" },
         python = { "ruff_organize_imports", "ruff_format" },
         rust = { "rustfmt" },
@@ -36,6 +38,9 @@ return {
         },
         ruff_format = {
           prepend_args = { "format", "--line-length", "120", "--quiet", "-" },
+        },
+        clang_format = {
+          prepend_args = { "--style=file", "--fallback-style=LLVM" },
         },
       },
     },
