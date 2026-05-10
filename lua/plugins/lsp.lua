@@ -17,6 +17,7 @@ return {
     dependencies = {
       "mason-org/mason.nvim",
       "neovim/nvim-lspconfig",
+      "hrsh7th/cmp-nvim-lsp",
     },
     opts = {
       ensure_installed = {
@@ -38,5 +39,12 @@ return {
         exclude = { "rust_analyzer" }
       },
     },
+    config = function(_, opts)
+      vim.lsp.config("*", {
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+        root_markers = { ".git" },
+      })
+      require("mason-lspconfig").setup(opts)
+    end,
   },
 }
