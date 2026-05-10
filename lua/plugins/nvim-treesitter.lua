@@ -29,7 +29,6 @@ return {
         "markdown_inline",
         "make",
         "cmake",
-        "regex",
       },
       -- Enable indent functionality
       indent = { enable = true },
