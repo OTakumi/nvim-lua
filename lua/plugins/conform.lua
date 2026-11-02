@@ -27,6 +27,7 @@ return {
         cs = { "csharpier" },
         go = { "goimports", "gofumpt" },
         markdown = { "markdownlint" },
+        toml = { "taplo" },
       },
       default_format_opts = {
         lsp_format = "fallback",
