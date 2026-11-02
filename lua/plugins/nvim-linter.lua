@@ -21,11 +21,12 @@ return {
         vue = { "biomejs" },
       }
 
-      -- Arguments configuration for specific linters
-      lint.linters.ruff.args = {
+      -- Extend (never replace) the default args: the defaults carry
+      -- `check --output-format json`, which the parser depends on
+      vim.list_extend(lint.linters.ruff.args, {
         "--select=F,E",
         "--ignore=E501",
-      }
+      })
 
       -- Autocmd to execute lint
       vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
