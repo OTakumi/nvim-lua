@@ -11,10 +11,10 @@ return {
       symbol_in_winbar = {
         enable = true,
       },
-      code_action_lightbulb = {
+      lightbulb = {
         enable = true,
       },
-      show_outline = {
+      outline = {
         win_width = 50,
         auto_preview = false,
       },
