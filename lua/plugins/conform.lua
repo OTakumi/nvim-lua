@@ -4,7 +4,7 @@ return {
     -- Load before file save to use format_on_save feature
     event = "BufWritePre",
     cmd = "ConformInfo",
-    dependencies = { "williamboman/mason.nvim" },
+    dependencies = { "mason-org/mason.nvim" },
     opts = {
       -- Execute formatting on file save
       format_on_save = {
