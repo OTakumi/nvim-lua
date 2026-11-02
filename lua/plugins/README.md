@@ -85,4 +85,3 @@ Plugin configurations managed by [lazy.nvim](https://github.com/folke/lazy.nvim)
 | [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) | `comments.lua` |
 | [windwp/nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) | `autotag.lua` |
 | [kylechui/nvim-surround](https://github.com/kylechui/nvim-surround) | `comments.lua` |
-| [rstacruz/vim-closer](https://github.com/rstacruz/vim-closer) | `closer.lua` |
