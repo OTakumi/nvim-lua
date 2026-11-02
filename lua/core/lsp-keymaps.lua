@@ -23,8 +23,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- Diagnostics
     vim.keymap.set("n", "ge", vim.diagnostic.open_float, vim.tbl_extend("force", opts, { desc = "LSP: Show Diagnostics" }))
-    vim.keymap.set("n", "g]", vim.diagnostic.goto_next, vim.tbl_extend("force", opts, { desc = "LSP: Next Diagnostic" }))
-    vim.keymap.set("n", "g[", vim.diagnostic.goto_prev, vim.tbl_extend("force", opts, { desc = "LSP: Prev Diagnostic" }))
+    vim.keymap.set("n", "g]", function()
+      vim.diagnostic.jump({ count = 1, float = true })
+    end, vim.tbl_extend("force", opts, { desc = "LSP: Next Diagnostic" }))
+    vim.keymap.set("n", "g[", function()
+      vim.diagnostic.jump({ count = -1, float = true })
+    end, vim.tbl_extend("force", opts, { desc = "LSP: Prev Diagnostic" }))
 
     -- Signature help
     vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, vim.tbl_extend("force", opts, { desc = "LSP: Signature Help" }))
