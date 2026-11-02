@@ -13,20 +13,12 @@ return {
         tsx = { "biomejs" },
         go = { "golangcilint" },
         lua = { "luacheck" },
-        python = { "ruff" },
         docker = { "hadolint" },
         markdown = { "markdownlint" },
         sql = { "sqlfluff" },
         yaml = { "yamllint" },
         vue = { "biomejs" },
       }
-
-      -- Extend (never replace) the default args: the defaults carry
-      -- `check --output-format json`, which the parser depends on
-      vim.list_extend(lint.linters.ruff.args, {
-        "--select=F,E",
-        "--ignore=E501",
-      })
 
       -- Autocmd to execute lint
       vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
