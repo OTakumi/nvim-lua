@@ -28,11 +28,14 @@ return {
         "vue_ls",
         "vtsls",
         "biome",
-        "pylsp",
+        "pyright",
         "ruff",
-        "dockerls",
+        "docker_language_server",
         "cssls",
         "yamlls",
+        "bashls",
+        "tailwindcss",
+        "terraformls",
       },
       automatic_enable = {
         exclude = { "rust_analyzer" }
