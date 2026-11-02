@@ -1,7 +1,9 @@
 return {
   {
     "mfussenegger/nvim-lint",
-    event = { "BufWritePost", "BufReadPost", "InsertLeave" },
+    -- Load on BufReadPre so the BufReadPost autocmd below is registered
+    -- before the first buffer finishes loading
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       local lint = require("lint")
 
@@ -50,4 +52,3 @@ return {
     end,
   },
 }
-
