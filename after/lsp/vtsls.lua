@@ -1,7 +1,7 @@
 ---@type vim.lsp.Config
 local vue_plugin_path = vim.fs.joinpath(
-  vim.env.HOME,
-  ".local/share/nvim/mason/packages/vue-language-server/node_modules/@vue/language-server"
+  vim.fn.stdpath("data"),
+  "mason/packages/vue-language-server/node_modules/@vue/language-server"
 )
 
 if vim.fn.isdirectory(vue_plugin_path) == 0 then

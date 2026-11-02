@@ -1,7 +1,9 @@
 return {
   {
     "mfussenegger/nvim-lint",
-    event = { "BufWritePost", "BufReadPost", "InsertLeave" },
+    -- Load on BufReadPre so the BufReadPost autocmd below is registered
+    -- before the first buffer finishes loading
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       local lint = require("lint")
 
@@ -13,18 +15,11 @@ return {
         tsx = { "biomejs" },
         go = { "golangcilint" },
         lua = { "luacheck" },
-        python = { "ruff" },
         docker = { "hadolint" },
         markdown = { "markdownlint" },
         sql = { "sqlfluff" },
         yaml = { "yamllint" },
         vue = { "biomejs" },
-      }
-
-      -- Arguments configuration for specific linters
-      lint.linters.ruff.args = {
-        "--select=F,E",
-        "--ignore=E501",
       }
 
       -- Autocmd to execute lint
@@ -57,4 +52,3 @@ return {
     end,
   },
 }
-
